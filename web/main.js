@@ -80,7 +80,8 @@ const player = {
     forgeryKit: false,
     utilities: [],
     spells: [],
-    tools: []
+    tools: [],
+    languages: []
 }
 
 const subraceDropdown = document.getElementById("subrace-dropdown")
@@ -1126,6 +1127,29 @@ function applyCleric() {
     }
 }
 
+function applyDruid() {
+    if ((player.class === 'Druid' && player.classLevels >= 1) ||
+        (player.secondClass === 'Druid' && player.secondClassLevels >= 1)) {
+        player.utilities.push("Spellcasting (Druid)");
+        player.languages.push("Druidic");
+    }
+    if ((player.class === 'Druid' && player.classLevels >= 2) ||
+        (player.secondClass === 'Druid' && player.secondClassLevels >= 2)) {
+        player.utilities.push("Wild Shape");
+    }
+    if ((player.class === 'Druid' && player.classLevels >= 18) ||
+        (player.secondClass === 'Druid' && player.secondClassLevels >= 18)) {
+        player.utilities.push("Timeless Body");
+        player.utilities.push("Beast Spells");
+    }
+    if ((player.class === 'Druid' && player.classLevels >= 20) ||
+        (player.secondClass === 'Druid' && player.secondClassLevels >= 20)) {
+        player.utilities.push("Unlimited Wild Shape");
+        player.utilities.push("Enhanced Beast Spells");
+    }
+    
+}
+
 function applyClasses() {
     utilitiesList.innerHTML ="Player Utilities";
     player.utilities = [];
@@ -1159,6 +1183,8 @@ function applyClasses() {
         classTrait.classList.add("font-weight-light");
         utilitiesList.appendChild(classTrait) }
 }
+
+
 
 function refreshEverything() {
     refreshCore();
