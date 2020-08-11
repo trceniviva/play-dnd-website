@@ -1137,6 +1137,14 @@ function applyDruid() {
         (player.secondClass === 'Druid' && player.secondClassLevels >= 2)) {
         player.utilities.push("Wild Shape");
     }
+    if (player.class === 'Druid' && player.classLevels >= 3) {
+        for (i=0; i< druidSubclasses.length; ++i) {druidSubclasses[i].classList.remove("hide-element")};
+        subclassOne.classList.remove("collapse");
+    }
+    if (player.secondClass === 'Druid' && player.secondClassLevels >= 3) {
+        for (i=0; i< druidSecondSubclasses.length; ++i) {druidSecondSubclasses[i].classList.remove("hide-element")};
+        subclassTwo.classList.remove("collapse");
+    }
     if ((player.class === 'Druid' && player.classLevels >= 18) ||
         (player.secondClass === 'Druid' && player.secondClassLevels >= 18)) {
         player.utilities.push("Timeless Body");
@@ -1147,7 +1155,50 @@ function applyDruid() {
         player.utilities.push("Unlimited Wild Shape");
         player.utilities.push("Enhanced Beast Spells");
     }
-    
+}
+
+function applyFighter() {
+    if ((player.class === 'Fighter' && player.classLevels >= 1) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 1)) {
+        player.utilities.push("Fighting Style");
+        player.utilities.push("Second Wind");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 2) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 2)) {
+        player.utilities.push("Action Surge");
+    }
+    if (player.class === 'Fighter' && player.classLevels >= 3) {
+        for (i=0; i< fighterSubclasses.length; ++i) {fighterSubclasses[i].classList.remove("hide-element")};
+        subclassOne.classList.remove("collapse");
+    }
+    if (player.secondClass === 'Fighter' && player.secondClassLevels >= 3) {
+        for (i=0; i< fighterSecondSubclasses.length; ++i) {fighterSecondSubclasses[i].classList.remove("hide-element")};
+        subclassTwo.classList.remove("collapse");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 5) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 5)) {
+        player.utilities.push("Second Attack");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 9) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 9)) {
+        player.utilities.push("Indomitable (x1)");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 11) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 11)) {
+        player.utilities.push("Third Attack");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 13) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 13)) {
+        player.utilities.push("Indomitable (x2)");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 17) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 17)) {
+        player.utilities.push("Indomitable (x3)");
+    }
+    if ((player.class === 'Fighter' && player.classLevels >= 20) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 20)) {
+        player.utilities.push("Fourth Attack");
+    }
 }
 
 function applyClasses() {
