@@ -346,39 +346,57 @@ function raceLanguages() {
     else if (player.race === "Dragonborn") {
         player.common = true;
         player.draconic = true;
+        player.languages.push("Common");
+        player.languages.push("Draconic");
     }
     else if (player.race === "Dwarf") {
         player.common = true;
         player.dwarvish = true;
+        player.languages.push("Common");
+        player.languages.push("Dwarvish");
     }
     else if (player.race === "Elf") {
         player.common = true;
         player.elvish = true;
+        player.languages.push("Common");
+        player.languages.push("Elvish");
     }
     else if (player.race === "Genasi") {
         player.common = true;
         player.primordial = true;
+        player.languages.push("Common");
+        player.languages.push("Primordial");
     }
     else if (player.race === "Gnome") {
         player.common = true;
         player.gnomish = true;
+        player.languages.push("Common");
+        player.languages.push("Gnomish");
     }
     else if (player.race === "Goliath") {
         player.common = true;
         player.giant = true;
+        player.languages.push("Common");
+        player.languages.push("Giant");
     }
     else if (player.race === "Half-elf") {
         player.common = true;
         player.elvish = true;
+        player.languages.push("Common");
+        player.languages.push("Elvish");
         raceLangOne.classList.remove("collapse");
     }
     else if (player.race === "Half-orc") {
         player.common = true;
         player.orc = true;
+        player.languages.push("Common");
+        player.languages.push("Orc");
     }
     else if (player.race === "Halfling") {
         player.common = true;
         player.halfling = true;
+        player.languages.push("Common");
+        player.languages.push("Halfling");
     }
     else if (player.race === "Human") {
         player.common = true;
@@ -416,17 +434,22 @@ function raceLanguages() {
     }
     else if (player.race === "Tabaxi") {
         player.common = true;
+        player.languages.push("Common");
         raceLangOne.classList.remove("collapse");
     }
     else if (player.race === "Tiefling") {
         player.common = true;
         player.infernal = true;
+        player.languages.push("Common");
+        player.languages.push("Infernal");
     }
     else if (player.race === "Tortle") {
         player.common = true;
+        player.languages.push("Common");
     }
     else if (player.race === "Warforged") {
         player.common = true;
+        player.languages.push("Common");
         raceLangOne.classList.remove("collapse");
     }
     hideAppropriateLanguages();
@@ -1185,6 +1208,7 @@ function applyFighter() {
     }
     if ((player.class === 'Fighter' && player.classLevels >= 11) ||
         (player.secondClass === 'Fighter' && player.secondClassLevels >= 11)) {
+        for (i=0;i < player.utilities.length; i++) {if (player.utilities[i] === "Second Attack"){player.utilities.splice(i, 1);}}
         player.utilities.push("Third Attack");
     }
     if ((player.class === 'Fighter' && player.classLevels >= 13) ||
@@ -1197,7 +1221,78 @@ function applyFighter() {
     }
     if ((player.class === 'Fighter' && player.classLevels >= 20) ||
         (player.secondClass === 'Fighter' && player.secondClassLevels >= 20)) {
+        for (i=0;i < player.utilities.length; i++) {if (player.utilities[i] === "Third Attack"){player.utilities.splice(i, 1);}}
         player.utilities.push("Fourth Attack");
+    }
+}
+
+function applyMonk() {
+    if ((player.class === 'Monk' && player.classLevels >= 1) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 1)) {
+        player.utilities.push("Unarmored Defense");
+        player.utilities.push("Martial Arts");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 2) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 2)) {
+        player.utilities.push("Flurry of Blows (Ki)");
+        player.utilities.push("Patient Defense (Ki)");
+        player.utilities.push("Step of the Wind (Ki)");
+        player.utilities.push("Unarmored Movement (10ft)");
+    }
+    if (player.class === 'Monk' && player.classLevels >= 3) {
+        for (i=0; i< monkSubclasses.length; ++i) {monkSubclasses[i].classList.remove("hide-element")};
+        subclassOne.classList.remove("collapse");
+    }
+    if (player.secondClass === 'Monk' && player.secondClassLevels >= 3) {
+        for (i=0; i< monkSecondSubclasses.length; ++i) {monkSecondSubclasses[i].classList.remove("hide-element")};
+        subclassTwo.classList.remove("collapse");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 3) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 3)) {
+        player.utilities.push("Defelect Missiles");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 4) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 4)) {
+        player.utilities.push("Slow Fall");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 5) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 5)) {
+        player.utilities.push("Stunning Strike (Ki)");
+        player.utilities.push("Second Attack");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 6) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 6)) {
+        player.utilities.push("Ki-Empowered Strikes");
+        for (i=0;i < player.utilities.length; i++) {if (player.utilities[i] === "Unarmored Movement (10ft)"){player.utilities.splice(i, 1);}}
+        player.utilities.push("Unarmored Movement (15ft)");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 7) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 7)) {
+        player.utilities.push("Evasion");
+        player.utilities.push("Stillness of Mind");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 9) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 9)) {
+        player.utilities.push("Unarmored Movement (vertical, liquids)");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 10) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 10)) {
+        player.utilities.push("Purity of Body");
+        player.utilities.push("Unarmored Movement (20ft)");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 13) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 13)) {
+        player.utilities.push("Tongue of the Sun and Moon");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 14) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 14)) {
+        player.utilities.push("Diamond Soul (Ki)");
+        player.utilities.push("Unarmored Movement (20ft)");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 10) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 10)) {
+        player.utilities.push("Purity of Body");
+        player.utilities.push("Unarmored Movement (20ft)");
     }
 }
 
