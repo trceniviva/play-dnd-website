@@ -1096,6 +1096,34 @@ function applyCleric() {
         (player.secondClass === 'Cleric' && player.secondClassLevels >= 2)) {
         player.utilities.push("Channel Divinity");
     }
+    if ((player.class === 'Cleric' && player.classLevels >= 5) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 5)) {
+        player.utilities.push("Destroy Undead (Max CR 1/2)");
+    }
+    if ((player.class === 'Cleric' && player.classLevels >= 8) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 8)) {
+        player.utilities.push("Destroy Undead (Max CR 1)");
+    }
+    if ((player.class === 'Cleric' && player.classLevels >= 10) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 10)) {
+        player.utilities.push("Divine Intervention");
+    }
+    if ((player.class === 'Cleric' && player.classLevels >= 11) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 11)) {
+        player.utilities.push("Destroy Undead (Max CR 2)");
+    }
+    if ((player.class === 'Cleric' && player.classLevels >= 14) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 14)) {
+        player.utilities.push("Destroy Undead (Max CR 3)");
+    }
+    if ((player.class === 'Cleric' && player.classLevels >= 17) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 17)) {
+        player.utilities.push("Destroy Undead (Max CR 4)");
+    }
+    if ((player.class === 'Cleric' && player.classLevels >= 20) || 
+        (player.secondClass === 'Cleric' && player.secondClassLevels >= 20)) {
+        player.utilities.push("Automatic Divine Intervention");
+    }
 }
 
 function applyClasses() {
