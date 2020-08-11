@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Create a D&D Character</title>
+</head>
+
+<body>
+    <header>
+        <h1>Create a D&D Character</h1>
+    </header>
+    <main>
+        <h3>Character Basics</h3>
+        <form id="character-basics-form">
+            <div class="row justify-content-md-center">
+                <!-- race selection dropdown -->
+                <div class="col col-2">
+                    <div class="form-group">
+                        <label for="raceDropdown"></label>
+                        <select class="form-control" id="raceDropdown"
+                            onchange="refreshEverything(); raceLanguages(); showSubrace();">
+                            <option>Race</option>
+                            <option>Changeling</option>
+                            <option>Dragonborn</option>
+                            <option>Dwarf</option>
+                            <option>Elf</option>
+                            <option>Genasi</option>
+                            <option>Gnome</option>
+                            <option>Goliath</option>
+                            <option>Half-elf</option>
+                            <option>Half-orc</option>
+                            <option>Halfling</option>
+                            <option>Human</option>
+                            <option>Kenku</option>
+                            <option>Tabaxi</option>
+                            <option>Tiefling</option>
+                            <option>Tortle</option>
+                            <option>Warforged</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- subrace selection dropdown -->
+                <div id="subrace-column" class="col col-2">
+                    <div class="form-group">
+                        <label for="subrace-dropdown"></label>
+                        <select class="form-control" id="subrace-dropdown" onload="refreshSubrace()"
+                            onchange="refreshEverything();">
+                            <option>Subrace</option>
+                        </select>
+                    </div>
+                </div>
+            <!-- </div> -->
+            <!-- class selection dropdown -->
+            <!-- <div class="row justify-content-md-center"> -->
+            <div class="col col-2" id="class-one">
+                <div class="form-group">
+                    <label for="classOneDropdown"></label>
+                    <select class="form-control" id="classOneDropdown" onchange="refreshCore();applyClasses();">
+                        <option>Class</option>
+                        <option>Artificer</option>
+                        <option>Barbarian</option>
+                        <option>Bard</option>
+                        <option>Cleric</option>
+                        <option>Druid</option>
+                        <option>Fighter</option>
+                        <option>Monk</option>
+                        <option>Paladin</option>
+                        <option>Ranger</option>
+                        <option>Rogue</option>
+                        <option>Sorcerer</option>
+                        <option>Warlock</option>
+                        <option>Wizard</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col col-1" id="class-one-levels">
+                <div class="form-group">
+                    <label for="classOneLevelsDropdown"></label>
+                    <select class="form-control" id="classOneLevelsDropdown" onchange="refreshEverything();applyClasses();">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="col col-2 collapse" id="class-two">
+                <div class="form-group">
+                    <label for="classTwoDropdown"></label>
+                    <select class="form-control" id="classTwoDropdown" onchange="refreshEverything(); applyClasses();">
+                        <option>2nd Class</option>
+                        <option>Artificer</option>
+                        <option>Barbarian</option>
+                        <option>Bard</option>
+                        <option>Cleric</option>
+                        <option>Druid</option>
+                        <option>Fighter</option>
+                        <option>Monk</option>
+                        <option>Paladin</option>
+                        <option>Ranger</option>
+                        <option>Rogue</option>
+                        <option>Sorcerer</option>
+                        <option>Warlock</option>
+                        <option>Wizard</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col col-1 collapse" id="class-two-levels">
+                <div class="form-group">
+                    <label for="classTwoLevelsDropdown"></label>
+                    <select class="form-control" id="classTwoLevelsDropdown" onchange="refreshEverything(); applyClasses();">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col col-4" id="multiclass-form" onchange="showSecondClass();refreshCore()">
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="multiclass" id="single-class" value="single"
+                            checked>
+                        <label class="form-check-label" for="single-class">Single Class</label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="multiclass" id="multi-class" value="multi">
+                        <label class="form-check-label" for="multi-class">Add Second Class</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <!-- background-sourced language one -->
+                <div class="col col-2 collapse" id="race-lang-one">
+                    <label for="race-lang-one-drop" id="race-lang-one-label"></label>
+                    <select class="form-control" id="race-lang-one-drop" onchange="refreshAllLanguages ()">
+                        <div class="dropdown-menu" aria-labelledby="race-lang-one">
+                            <option>Pick Language</option>
+                            <option class="language-abyssal">Abyssal</option>
+                            <option class="language-celestial">Celestial</option>
+                            <option class="language-common">Common</option>
+                            <option class="language-daelkyr">Daelkyr</option>
+                            <option class="language-deep-speech">DeepSpeech</option>
+                            <option class="language-draconic">Draconic</option>
+                            <option class="language-dwarvish">Dwarvish</option>
+                            <option class="language-elvish">Elvish</option>
+                            <option class="language-giant">Giant</option>
+                            <option class="language-gith">Gith</option>
+                            <option class="language-gnomish">Gnomish</option>
+                            <option class="language-goblin">Goblin</option>
+                            <option class="language-halfling">Halfling</option>
+                            <option class="language-infernal">Infernal</option>
+                            <option class="language-kraul">Kraul</option>
+                            <option class="language-leonin">Leonin</option>
+                            <option class="language-loxodon">Loxodon</option>
+                            <option class="language-marquesian">Marquesian</option>
+                            <option class="language-minotaur">Minotaur</option>
+                            <option class="language-naush">Naush</option>
+                            <option class="language-orc">Orc</option>
+                            <option class="language-primordial">Primordial</option>
+                            <option class="language-quori">Quori</option>
+                            <option class="language-riedran">Riedran</option>
+                            <option class="language-sylvan">Sylvan</option>
+                            <option class="language-undercommon">Undercommon</option>
+                            <option class="language-vedalken">Vedalken</option>
+                            <option class="language-zemnian">Zemnian</option>
+                        </div>
+                    </select>
+                </div>
+                <!-- background-sourced language two -->
+                <div class="col col-2 collapse" id="race-lang-two">
+                    <label for="race-lang-two-drop" id="race-lang-two-label"></label>
+                    <select class="form-control" id="race-lang-two-drop" onchange="refreshAllLanguages ()">
+                        <div class="dropdown-menu" aria-labelledby="race-lang-two">
+                            <option>Pick Language</option>
+                            <option class="language-abyssal">Abyssal</option>
+                            <option class="language-celestial">Celestial</option>
+                            <option class="language-common">Common</option>
+                            <option class="language-daelkyr">Daelkyr</option>
+                            <option class="language-deep-speech">DeepSpeech</option>
+                            <option class="language-draconic">Draconic</option>
+                            <option class="language-dwarvish">Dwarvish</option>
+                            <option class="language-elvish">Elvish</option>
+                            <option class="language-giant">Giant</option>
+                            <option class="language-gith">Gith</option>
+                            <option class="language-gnomish">Gnomish</option>
+                            <option class="language-goblin">Goblin</option>
+                            <option class="language-halfling">Halfling</option>
+                            <option class="language-infernal">Infernal</option>
+                            <option class="language-kraul">Kraul</option>
+                            <option class="language-leonin">Leonin</option>
+                            <option class="language-loxodon">Loxodon</option>
+                            <option class="language-marquesian">Marquesian</option>
+                            <option class="language-minotaur">Minotaur</option>
+                            <option class="language-naush">Naush</option>
+                            <option class="language-orc">Orc</option>
+                            <option class="language-primordial">Primordial</option>
+                            <option class="language-quori">Quori</option>
+                            <option class="language-riedran">Riedran</option>
+                            <option class="language-sylvan">Sylvan</option>
+                            <option class="language-undercommon">Undercommon</option>
+                            <option class="language-vedalken">Vedalken</option>
+                            <option class="language-zemnian">Zemnian</option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <!-- first class sub-options -->
+            <div class="row justify-content-md-center">
+                <div class="col col-2 collapse" id="subclass-one">
+                    <label for="subclass-one-drop" id="subclass-one-label"></label>
+                    <select class="form-control" id="subclass-one-drop" onchange="refreshEverything();applyClasses();">
+                        <div class="dropdown-menu" aria-labelledby="subclass-one-label">
+                            <option>Choose First Subclass</option>
+                            <option class="subclass-one-artificer hide-element">Alchemist</option>
+                            <option class="subclass-one-artificer hide-element">Artillerist</option>
+                            <option class="subclass-one-artificer hide-element">Battle Smith</option>
+                            <option class="subclass-one-barbarian hide-element">Ancestral Guardian</option>
+                            <option class="subclass-one-barbarian hide-element">Battlerager</option>
+                            <option class="subclass-one-barbarian hide-element">Berserker</option>
+                            <option class="subclass-one-barbarian hide-element">Storm Herald</option>
+                            <option class="subclass-one-barbarian hide-element">Totem Warrior</option>
+                            <option class="subclass-one-barbarian hide-element">Zealot</option>
+                            <option class="subclass-one-bard hide-element">Eloquence</option>
+                            <option class="subclass-one-bard hide-element">Glamour</option>
+                            <option class="subclass-one-bard hide-element">Lore</option>
+                            <option class="subclass-one-bard hide-element">Swords</option>
+                            <option class="subclass-one-bard hide-element">Valor</option>
+                            <option class="subclass-one-bard hide-element">Whispers</option>
+                            <option class="subclass-one-cleric hide-element">Arcana</option>
+                            <option class="subclass-one-cleric hide-element">Death</option>
+                            <option class="subclass-one-cleric hide-element">Forge</option>
+                            <option class="subclass-one-cleric hide-element">Grave</option>
+                            <option class="subclass-one-cleric hide-element">Knowledge</option>
+                            <option class="subclass-one-cleric hide-element">Life</option>
+                            <option class="subclass-one-cleric hide-element">Light</option>
+                            <option class="subclass-one-cleric hide-element">Nature</option>
+                            <option class="subclass-one-cleric hide-element">Order</option>
+                            <option class="subclass-one-cleric hide-element">Tempest</option>
+                            <option class="subclass-one-cleric hide-element">Trickery</option>
+                            <option class="subclass-one-cleric hide-element">War</option>
+                            
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <!-- second class sub-options -->
+            <div class="row justify-content-md-center">
+                <div class="col col-2 collapse" id="subclass-two">
+                    <label for="subclass-two-drop" id="subclass-two-label"></label>
+                    <select class="form-control" id="subclass-two-drop" onchange="refreshEverything();applyClasses();">
+                        <div class="dropdown-menu" aria-labelledby="subclass-two-label" id="subclass-two-drop-menu">
+                            <option>Choose Second Subclass</option>
+                            <option class="subclass-two-artificer hide-element">Alchemist</option>
+                            <option class="subclass-two-artificer hide-element">Artillerist</option>
+                            <option class="subclass-two-artificer hide-element">Battle Smith</option>
+                            <option class="subclass-two-barbarian hide-element">Ancestral Guardian</option>
+                            <option class="subclass-two-barbarian hide-element">Battlerager</option>
+                            <option class="subclass-two-barbarian hide-element">Berserker</option>
+                            <option class="subclass-two-barbarian hide-element">Storm Herald</option>
+                            <option class="subclass-two-barbarian hide-element">Totem Warrior</option>
+                            <option class="subclass-two-barbarian hide-element">Zealot</option>
+                            <option class="subclass-two-bard hide-element">Eloquence</option>
+                            <option class="subclass-two-bard hide-element">Glamour</option>
+                            <option class="subclass-two-bard hide-element">Lore</option>
+                            <option class="subclass-two-bard hide-element">Swords</option>
+                            <option class="subclass-two-bard hide-element">Valor</option>
+                            <option class="subclass-two-bard hide-element">Whispers</option>
+                            <option class="subclass-two-cleric hide-element">Arcana</option>
+                            <option class="subclass-two-cleric hide-element">Death</option>
+                            <option class="subclass-two-cleric hide-element">Forge</option>
+                            <option class="subclass-two-cleric hide-element">Grave</option>
+                            <option class="subclass-two-cleric hide-element">Knowledge</option>
+                            <option class="subclass-two-cleric hide-element">Life</option>
+                            <option class="subclass-two-cleric hide-element">Light</option>
+                            <option class="subclass-two-cleric hide-element">Nature</option>
+                            <option class="subclass-two-cleric hide-element">Order</option>
+                            <option class="subclass-two-cleric hide-element">Tempest</option>
+                            <option class="subclass-two-cleric hide-element">Trickery</option>
+                            <option class="subclass-two-cleric hide-element">War</option>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <!-- background selection dropdown -->
+            <div class="row justify-content-md-center">
+                <div class="col col-2">
+                    <div class="form-group">
+                        <label for="backgroundDropdown"></label>
+                        <select class="form-control" id="backgroundDropdown"
+                            onchange="refreshEverything(); showBackgroundOptions()">
+                            <div class="dropdown-menu" aria-labelledby="backgroundDropdown">
+                                <option>Background</option>
+                                <option>Acolyte</option>
+                                <option>Anthropologist</option>
+                                <option>Archaeologist</option>
+                                <option>Athlete</option>
+                                <option>Charlatan</option>
+                                <option>City Watch / Investigator</option>
+                                <option>Clan Crafter</option>
+                                <option>Cloistered Scholar</option>
+                                <option>Courtier</option>
+                                <option>Criminal / Spy</option>
+                                <option>Entertainer</option>
+                                <option>Faction Agent</option>
+                                <option>Far Traveler</option>
+                                <option>Fisher</option>
+                                <option>Folk Hero</option>
+                                <option>Gladiator</option>
+                                <option>Guild Artisan / Guild Merchant</option>
+                                <option>Haunted One</option>
+                                <option>Hermit</option>
+                                <option>Inheritor</option>
+                                <option>Knight</option>
+                                <option>Knight of the Order</option>
+                                <option>Marine</option>
+                                <option>Mercenary Veteran</option>
+                                <option>Noble</option>
+                                <option>Outlander</option>
+                                <option>Pirate</option>
+                                <option>Sage</option>
+                                <option>Sailor</option>
+                                <option>Shipwright</option>
+                                <option>Smuggler</option>
+                                <option>Soldier</option>
+                                <option>Urban Bounty Hunter</option>
+                                <option>Urchin</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- background-sourced language one -->
+                <div class="col col-2 collapse" id="bg-lang-one">
+                    <label for="bg-lang-one-drop" id="bg-lang-one-label"></label>
+                    <select class="form-control" id="bg-lang-one-drop" onchange="refreshAllLanguages ()">
+                        <div class="dropdown-menu" aria-labelledby="bg-lang-one">
+                            <option>Pick Language</option>
+                            <option class="language-abyssal">Abyssal</option>
+                            <option class="language-celestial">Celestial</option>
+                            <option class="language-common">Common</option>
+                            <option class="language-daelkyr">Daelkyr</option>
+                            <option class="language-deep-speech">DeepSpeech</option>
+                            <option class="language-draconic">Draconic</option>
+                            <option class="language-dwarvish">Dwarvish</option>
+                            <option class="language-elvish">Elvish</option>
+                            <option class="language-giant">Giant</option>
+                            <option class="language-gith">Gith</option>
+                            <option class="language-gnomish">Gnomish</option>
+                            <option class="language-goblin">Goblin</option>
+                            <option class="language-halfling">Halfling</option>
+                            <option class="language-infernal">Infernal</option>
+                            <option class="language-kraul">Kraul</option>
+                            <option class="language-leonin">Leonin</option>
+                            <option class="language-loxodon">Loxodon</option>
+                            <option class="language-marquesian">Marquesian</option>
+                            <option class="language-minotaur">Minotaur</option>
+                            <option class="language-naush">Naush</option>
+                            <option class="language-orc">Orc</option>
+                            <option class="language-primordial">Primordial</option>
+                            <option class="language-quori">Quori</option>
+                            <option class="language-riedran">Riedran</option>
+                            <option class="language-sylvan">Sylvan</option>
+                            <option class="language-undercommon">Undercommon</option>
+                            <option class="language-vedalken">Vedalken</option>
+                            <option class="language-zemnian">Zemnian</option>
+                        </div>
+                    </select>
+                </div>
+                <!-- background-sourced language two -->
+                <div class="col col-2 collapse" id="bg-lang-two">
+                    <label for="bg-lang-two-drop" id="bg-lang-two-label"></label>
+                    <select class="form-control" id="bg-lang-two-drop" onchange="refreshAllLanguages ()">
+                        <div class="dropdown-menu" aria-labelledby="bg-lang-two">
+                            <option>Pick Language</option>
+                            <option class="language-abyssal">Abyssal</option>
+                            <option class="language-celestial">Celestial</option>
+                            <option class="language-common">Common</option>
+                            <option class="language-daelkyr">Daelkyr</option>
+                            <option class="language-deep-speech">DeepSpeech</option>
+                            <option class="language-draconic">Draconic</option>
+                            <option class="language-dwarvish">Dwarvish</option>
+                            <option class="language-elvish">Elvish</option>
+                            <option class="language-giant">Giant</option>
+                            <option class="language-gith">Gith</option>
+                            <option class="language-gnomish">Gnomish</option>
+                            <option class="language-goblin">Goblin</option>
+                            <option class="language-halfling">Halfling</option>
+                            <option class="language-infernal">Infernal</option>
+                            <option class="language-kraul">Kraul</option>
+                            <option class="language-leonin">Leonin</option>
+                            <option class="language-loxodon">Loxodon</option>
+                            <option class="language-marquesian">Marquesian</option>
+                            <option class="language-minotaur">Minotaur</option>
+                            <option class="language-naush">Naush</option>
+                            <option class="language-orc">Orc</option>
+                            <option class="language-primordial">Primordial</option>
+                            <option class="language-quori">Quori</option>
+                            <option class="language-riedran">Riedran</option>
+                            <option class="language-sylvan">Sylvan</option>
+                            <option class="language-undercommon">Undercommon</option>
+                            <option class="language-vedalken">Vedalken</option>
+                            <option class="language-zemnian">Zemnian</option>
+                        </div>
+                    </select>
+                </div>
+                <!-- background-sourced skill one -->
+                <div class="col collapse" id="bg-skill-one">
+                    <label for="bg-skill-one-drop" id="bg-skill-one-label"></label>
+                    <select class="form-control" id="bg-skill-one-drop">
+                        <div class="dropdown-menu" aria-labelledby="bg-skill-one">
+                        </div>
+                    </select>
+                </div>
+                <!-- background-sourced skill two -->
+                <div class="col collapse" id="bg-skill-two">
+                    <label for="bg-skill-two-drop" id="bg-skill-two-label"></label>
+                    <select class="form-control" id="bg-skill-two-drop">
+                        <div class="dropdown-menu" aria-labelledby="bg-skill-two">
+                        </div>
+                    </select>
+                </div>
+                <!-- background-sourced tool one -->
+                <div class="col collapse" id="bg-tool-one">
+                    <label for="bg-tool-one-drop" id="bg-tool-one-label"></label>
+                    <select class="form-control" id="bg-tool-one-drop">
+                        <div class="dropdown-menu" aria-labelledby="bg-tool-one">
+                        </div>
+                    </select>
+                </div>
+                <!-- background-sourced tool two -->
+                <div class="col collapse" id="bg-tool-two">
+                    <label for="bg-tool-two-drop" id="bg-tool-two-label"></label>
+                    <select class="form-control" id="bg-tool-two-drop">
+                        <div class="dropdown-menu" aria-labelledby="bg-tool-two">
+                        </div>
+                    </select>
+                </div>
+            </div>
+            </div>
+
+            <!-- entering core ability scores -->
+            <div class="row justify-content-md-center">
+                <div class="col col-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Base Str</label>
+                        <textarea class="form-control" id="base-str" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Base Dex</label>
+                        <textarea class="form-control" id="base-dex" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Base Con</label>
+                        <textarea class="form-control" id="base-con" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Base Int</label>
+                        <textarea class="form-control" id="base-int" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Base Wis</label>
+                        <textarea class="form-control" id="base-wis" rows="1"></textarea>
+                    </div>
+                </div>
+                <div class="col col-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Base Cha</label>
+                        <textarea class="form-control" id="base-cha" rows="1"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button id="refresh-character" type="submit" class="btn btn-success"
+                onClick="refreshCore(); calcAbRaceBonus(); refreshAbScores(); refreshSkillScores();">Refresh</button>
+        </form>
+        <br>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col col-3 font-sm border">
+                    <div class="row border">
+                        <div class="col skill-name">Acrobatics</div>
+                        <div id="acrobatics" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Animal Handling</div>
+                        <div id="animal-handling" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Arcana</div>
+                        <div id="arcana" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Athletics</div>
+                        <div id="athletics" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Deception</div>
+                        <div id="deception" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">History</div>
+                        <div id="history" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Insight</div>
+                        <div id="insight" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Intimidation</div>
+                        <div id="intimidation" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Investigation</div>
+                        <div id="investigation" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Medicine</div>
+                        <div id="medicine" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Nature</div>
+                        <div id="nature" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Perception</div>
+                        <div id="perception" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Performance</div>
+                        <div id="performance" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Persuasion</div>
+                        <div id="persuasion" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Religion</div>
+                        <div id="religion" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Sleight of Hand</div>
+                        <div id="sleight-of-hand" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Stealth</div>
+                        <div id="stealth" class="col skill-name">0</div>
+                    </div>
+                    <div class="row border">
+                        <div class="col skill-name">Surival</div>
+                        <div id="survival" class="col skill-name">0</div>
+                    </div>
+                </div>
+                <div class="col col-3">
+                    <p id="output-player-subrace" class="p-inline">Player Subrace</p>
+                    <p id="output-player-race" class="p-inline">Player Race</p>
+                    <p>Level <span id="output-class-one-level">#</span> <span id="output-class-one-sub">Subclass</span> <span id="output-class-one">Class</span></p>
+                    <p>Level <span id="output-class-two-level">#</span> <span id="output-class-two-sub">Subclass</span> <span id="output-class-two">Class</span></p>
+                    <p id="output-player-background">Player Background</p>
+                </div>
+                <div class="col col-3">
+                    <ul class="list-group list-group-flush font-weight-bold" id="utilities-list">Player Utilities</ul>
+                </div>
+                <div class="col col-3">
+                    <p>Weapon Proficiencies</p>
+                    <p>Languages</p>
+                    <p>Tool Proficiencies</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col">
+                    <p>Strength</p>
+                    <p id="final-str">6</p>
+                </div>
+                <div class="col">
+                    <p>Dexterity</p>
+                    <p id="final-dex">6</p>
+                </div>
+                <div class="col">
+                    <p>Constitution</p>
+                    <p id="final-con">6</p>
+                </div>
+                <div class="col">
+                    <p>Intelligence</p>
+                    <p id="final-int">6</p>
+                </div>
+                <div class="col">
+                    <p>Wisdom</p>
+                    <p id="final-wis">6</p>
+                </div>
+                <div class="col">
+                    <p>Charisma</p>
+                    <p id="final-cha">6</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="main.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
