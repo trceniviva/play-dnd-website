@@ -1198,26 +1198,26 @@ function applyFighter() {
         for (i=0; i< fighterSecondSubclasses.length; ++i) {fighterSecondSubclasses[i].classList.remove("hide-element")};
         subclassTwo.classList.remove("collapse");
     }
-    if ((player.class === 'Fighter' && player.classLevels >= 5) ||
-        (player.secondClass === 'Fighter' && player.secondClassLevels >= 5)) {
+    if ((player.class === 'Fighter' && player.classLevels >= 5 && player.classLevels < 11) ||
+        (player.secondClass === 'Fighter' && 11 > player.secondClassLevels >= 5 && player.secondClassLevels < 11)) {
         player.utilities.push("Second Attack");
     }
-    if ((player.class === 'Fighter' && player.classLevels >= 9) ||
-        (player.secondClass === 'Fighter' && player.secondClassLevels >= 9)) {
-        player.utilities.push("Indomitable (x1)");
+    if ((player.class === 'Fighter' && player.classLevels >= 9  && player.classLevels < 13) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 9 && player.secondClassLevels < 13)) {
+        player.utilities.push("Indomitable x1");
     }
-    if ((player.class === 'Fighter' && player.classLevels >= 11) ||
-        (player.secondClass === 'Fighter' && player.secondClassLevels >= 11)) {
+    if ((player.class === 'Fighter' && player.classLevels >= 11 && player.classLevels < 20) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 11 && player.secondClassLevels < 20)) {
         for (i=0;i < player.utilities.length; i++) {if (player.utilities[i] === "Second Attack"){player.utilities.splice(i, 1);}}
         player.utilities.push("Third Attack");
     }
-    if ((player.class === 'Fighter' && player.classLevels >= 13) ||
-        (player.secondClass === 'Fighter' && player.secondClassLevels >= 13)) {
-        player.utilities.push("Indomitable (x2)");
+    if ((player.class === 'Fighter' && player.classLevels >= 13 && player.classLevels < 17) ||
+        (player.secondClass === 'Fighter' && player.secondClassLevels >= 13 && player.secondClassLevels < 17)) {
+        player.utilities.push("Indomitable x2");
     }
     if ((player.class === 'Fighter' && player.classLevels >= 17) ||
         (player.secondClass === 'Fighter' && player.secondClassLevels >= 17)) {
-        player.utilities.push("Indomitable (x3)");
+        player.utilities.push("Indomitable x3");
     }
     if ((player.class === 'Fighter' && player.classLevels >= 20) ||
         (player.secondClass === 'Fighter' && player.secondClassLevels >= 20)) {
@@ -1237,7 +1237,9 @@ function applyMonk() {
         player.utilities.push("Flurry of Blows (Ki)");
         player.utilities.push("Patient Defense (Ki)");
         player.utilities.push("Step of the Wind (Ki)");
-        player.utilities.push("Unarmored Movement (10ft)");
+        if ((player.class === 'Monk' && player.classLevels < 6) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels < 6)) {
+        player.utilities.push("Unarmored Movement (10ft)");}
     }
     if (player.class === 'Monk' && player.classLevels >= 3) {
         for (i=0; i< monkSubclasses.length; ++i) {monkSubclasses[i].classList.remove("hide-element")};
@@ -1263,8 +1265,9 @@ function applyMonk() {
     if ((player.class === 'Monk' && player.classLevels >= 6) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 6)) {
         player.utilities.push("Ki-Empowered Strikes");
-        for (i=0;i < player.utilities.length; i++) {if (player.utilities[i] === "Unarmored Movement (10ft)"){player.utilities.splice(i, 1);}}
-        player.utilities.push("Unarmored Movement (15ft)");
+        if ((player.class === 'Monk' && player.classLevels < 10) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels < 10)) {
+        player.utilities.push("Unarmored Movement (15ft)");}
     }
     if ((player.class === 'Monk' && player.classLevels >= 7) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 7)) {
@@ -1278,7 +1281,9 @@ function applyMonk() {
     if ((player.class === 'Monk' && player.classLevels >= 10) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 10)) {
         player.utilities.push("Purity of Body");
-        player.utilities.push("Unarmored Movement (20ft)");
+        if ((player.class === 'Monk' && player.classLevels < 14) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels < 14)) {
+        player.utilities.push("Unarmored Movement (20ft)");}
     }
     if ((player.class === 'Monk' && player.classLevels >= 13) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 13)) {
@@ -1287,12 +1292,22 @@ function applyMonk() {
     if ((player.class === 'Monk' && player.classLevels >= 14) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 14)) {
         player.utilities.push("Diamond Soul (Ki)");
-        player.utilities.push("Unarmored Movement (20ft)");
+        if ((player.class === 'Monk' && player.classLevels < 18) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels < 18)) {
+        player.utilities.push("Unarmored Movement (25ft)");}
     }
-    if ((player.class === 'Monk' && player.classLevels >= 10) ||
-        (player.secondClass === 'Monk' && player.secondClassLevels >= 10)) {
-        player.utilities.push("Purity of Body");
-        player.utilities.push("Unarmored Movement (20ft)");
+    if ((player.class === 'Monk' && player.classLevels >= 15) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 15)) {
+        player.utilities.push("Timeless Body");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 18) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 18)) {
+        player.utilities.push("Empty Body");
+        player.utilities.push("Unarmored Movement (30ft)");
+    }
+    if ((player.class === 'Monk' && player.classLevels >= 20) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels >= 20)) {
+        player.utilities.push("Perfect Self");
     }
 }
 
