@@ -764,6 +764,8 @@ function resetBackgrounds() {
     bgLangTwo.classList.add("collapse");
     bgSkillOne.classList.add("collapse");
     bgSkillTwo.classList.add("collapse");
+    while (bgSkillOneOptions.firstChild) {bgSkillOneOptions.removeChild(bgSkillOneOptions.firstChild)};
+    while (bgSkillTwoOptions.firstChild) {bgSkillTwoOptions.removeChild(bgSkillTwoOptions.firstChild)};
     while (bgToolOneOptions.firstChild) {bgToolOneOptions.removeChild(bgToolOneOptions.firstChild)};
     while (bgToolTwoOptions.firstChild) {bgToolTwoOptions.removeChild(bgToolTwoOptions.firstChild)};
     bgToolOne.classList.add("collapse");
@@ -844,11 +846,33 @@ function showBackgroundOptions() {
         player.skillProficiencies.push("Persuasion");
         bgLangOneOptions.classList.remove("collapse");
         bgToolOne.classList.remove("collapse");
-        let bgTools = ["Pick a Tool"].concat(allInstruments);
+        let bgTools = ["Pick a Tool"].concat(artisansTools);
         for (i = 0; i < bgTools.length; i ++) {
             let toolOption = document.createElement("option");
             toolOption.innerHTML = bgTools[i]
             bgToolOneOptions.appendChild(toolOption)
+        }
+    } else if (player.background === 'Haunted One') {
+        bgSkillOne.classList.remove("collapse");
+        bgSkillTwo.classList.remove("collapse");
+        let bgSkills = ["Pick a Skill", "Arcana", "Investigation", "Religion", "Survival"];
+
+        for (i = 0; i < bgSkills.length; i++) {
+            let skillOption = document.createElement("option");
+            let skillOptionTwo = document.createElement("option");
+            skillOption.innerHTML = bgSkills[i];
+            skillOptionTwo.innerHTML = bgSkills[i];
+            bgSkillOneOptions.appendChild(skillOption)
+            bgSkillTwoOptions.appendChild(skillOptionTwo)
+        }
+
+        bgLangOneOptions.classList.remove("collapse");
+        bgToolOne.classList.remove("collapse");
+        let bgTools = ["Pick a Tool"].concat(artisansTools);
+        for (i = 0; i < bgTools.length; i++) {
+            let toolOption = document.createElement("option");
+            toolOption.innerHTML = bgTools[i];
+            bgToolOneOptions.appendChild(toolOption);
         }
     }
 }
