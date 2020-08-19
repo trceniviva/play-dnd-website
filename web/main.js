@@ -1,4 +1,4 @@
-const player = {
+let player = {
     race: 'none',
     subrace: 'none',
     fullRace: 'none',
@@ -107,14 +107,21 @@ function refreshCore() {
     player.level = Number(document.getElementById("classOneLevelsDropdown").value) + Number(document.getElementById("classTwoLevelsDropdown").value);
     document.getElementById("output-player-subrace").innerHTML=player.subrace;
     document.getElementById("output-player-race").innerHTML=player.race;
-    document.getElementById("output-class-one-level").innerHTML=player.classLevels;
-    document.getElementById("output-class-one-sub").innerHTML=player.subclass;
+    document.getElementById("output-class-one-level").innerHTML="Level " + player.classLevels;
+    if (player.subclass != "Choose First Subclass") {
+    document.getElementById("output-class-one-sub").innerHTML=player.subclass;} else {
+        document.getElementById("output-class-one-sub").innerHTML='';
+    }
     document.getElementById("output-class-one").innerHTML=player.class;
-
-    document.getElementById("output-class-two-level").innerHTML=player.secondClassLevels;
-    document.getElementById("output-class-two-sub").innerHTML=player.secondSubclass;
-    document.getElementById("output-class-two").innerHTML=player.secondClass;
-
+    if (player.secondClass != "2nd Class") {
+        document.getElementById("output-class-two-level").innerHTML="Level " + player.secondClassLevels;
+        document.getElementById("output-class-two-sub").innerHTML=player.secondSubclass;
+        document.getElementById("output-class-two").innerHTML=player.secondClass;
+    } else {
+        document.getElementById("output-class-two-level").innerHTML='';
+        document.getElementById("output-class-two-sub").innerHTML='';
+        document.getElementById("output-class-two").innerHTML='';
+    }
     document.getElementById("output-player-background").innerHTML=player.background;
 }
 
@@ -340,6 +347,7 @@ function raceLanguages() {
     showAllLanguages();
     if (player.race === "Changeling") {
         player.common = true;
+        player.languages.push("Common");
         raceLangOne.classList.remove("collapse");
         raceLangTwo.classList.remove("collapse");
     }
@@ -641,6 +649,8 @@ function calcAbRaceBonus() {
     } else if (player.race === 'Gnome') {
         player.strRace = 0;player.dexRace = 0;player.conRace = 0;
         player.intRace = 2;player.wisRace = 0;player.chaRace = 0;
+        if (player.subrace === 'Forest') {player.dexRace = 1} 
+        else if (player.subrace === 'Rock') {player.conRace = 1};
     } else if (player.race === 'Half-orc') {
         player.strRace = 2;player.dexRace = 0;player.conRace = 1;
         player.intRace = 0;player.wisRace = 0;player.chaRace = 0;
@@ -665,75 +675,94 @@ function calcAbRaceBonus() {
 function refreshSkillScores() {
     var acrobatics = document.getElementById("acrobatics");
     var acrobaticsValue = Math.floor((Number(player.dex) - 10) / 2) + Number(player.acrobatics);
-    acrobatics.innerHTML = acrobaticsValue;
+    let sign;
+    if (acrobaticsValue > 0) {sign = "+"} else {sign = ""};
+    acrobatics.innerHTML = sign + acrobaticsValue;
     
     var animalHandling = document.getElementById("animal-handling");
     var animalHandlingValue = Math.floor((Number(player.wis) - 10) / 2) + Number(player.animalHandling);
-    animalHandling.innerHTML = animalHandlingValue;
+    if (animalHandlingValue > 0) {sign = "+"} else {sign = ""};
+    animalHandling.innerHTML = sign + animalHandlingValue;
     
     var arcana = document.getElementById("arcana");
     var arcanaValue = Math.floor((Number(player.int) - 10) / 2) + Number(player.arcana);
-    arcana.innerHTML = arcanaValue;
+    if (arcanaValue > 0) {sign = "+"} else {sign = ""};
+    arcana.innerHTML = sign + arcanaValue;
     
     var athletics = document.getElementById("athletics");
     var athleticsValue = Math.floor((Number(player.str) - 10) / 2) + Number(player.athletics);
-    athletics.innerHTML = athleticsValue;
+    if (athleticsValue > 0) {sign = "+"} else {sign = ""};
+    athletics.innerHTML = sign + athleticsValue;
     
     var deception = document.getElementById("deception");
     var deceptionValue = Math.floor((Number(player.cha) - 10) / 2) + Number(player.deception);
-    deception.innerHTML = deceptionValue;
+    if (deceptionValue > 0) {sign = "+"} else {sign = ""};
+    deception.innerHTML = sign + deceptionValue;
     
     var history = document.getElementById("history");
     var historyValue = Math.floor((Number(player.int) - 10) / 2) + Number(player.history);
-    history.innerHTML = historyValue;
+    if (historyValue > 0) {sign = "+"} else {sign = ""};
+    history.innerHTML = sign + historyValue;
     
     var insight = document.getElementById("insight");
     var insightValue = Math.floor((Number(player.wis) - 10) / 2) + Number(player.insight);
-    insight.innerHTML = insightValue;
+    if (insightValue > 0) {sign = "+"} else {sign = ""};
+    insight.innerHTML = sign + insightValue;
     
     var intimidation = document.getElementById("intimidation");
     var intimidationValue = Math.floor((Number(player.cha) - 10) / 2) + Number(player.intimidation);
-    intimidation.innerHTML = intimidationValue;
+    if (intimidationValue > 0) {sign = "+"} else {sign = ""};
+    intimidation.innerHTML = sign + intimidationValue;
     
     var investigation = document.getElementById("investigation");
     var investigationValue = Math.floor((Number(player.int) - 10) / 2) + Number(player.investigation);
-    investigation.innerHTML = investigationValue;
+    if (investigationValue > 0) {sign = "+"} else {sign = ""};
+    investigation.innerHTML = sign + investigationValue;
     
     var medicine = document.getElementById("medicine");
     var medicineValue = Math.floor((Number(player.wis) - 10) / 2) + Number(player.medicine);
-    medicine.innerHTML = medicineValue;
+    if (medicineValue > 0) {sign = "+"} else {sign = ""};
+    medicine.innerHTML = sign + medicineValue;
     
     var nature = document.getElementById("nature");
     var natureValue = Math.floor((Number(player.int) - 10) / 2) + Number(player.nature);
-    nature.innerHTML = natureValue;
+    if (natureValue > 0) {sign = "+"} else {sign = ""};
+    nature.innerHTML = sign + natureValue;
     
     var perception = document.getElementById("perception");
     var perceptionValue = Math.floor((Number(player.wis) - 10) / 2) + Number(player.perception);
-    perception.innerHTML = perceptionValue;
+    if (perceptionValue > 0) {sign = "+"} else {sign = ""};
+    perception.innerHTML = sign + perceptionValue;
     
     var performance = document.getElementById("performance");
     var performanceValue = Math.floor((Number(player.cha) - 10) / 2) + Number(player.performance);
-    performance.innerHTML = performanceValue;
+    if (performanceValue > 0) {sign = "+"} else {sign = ""};
+    performance.innerHTML = sign + performanceValue;
     
     var persuasion = document.getElementById("persuasion");
     var persuasionValue = Math.floor((Number(player.cha) - 10) / 2) + Number(player.persuasion);
-    persuasion.innerHTML = persuasionValue;
+    if (persuasionValue > 0) {sign = "+"} else {sign = ""};
+    persuasion.innerHTML = sign + persuasionValue;
     
     var religion = document.getElementById("religion");
     var religionValue = Math.floor((Number(player.int) - 10) / 2) + Number(player.religion);
-    religion.innerHTML = religionValue;
+    if (religionValue > 0) {sign = "+"} else {sign = ""};
+    religion.innerHTML = sign + religionValue;
     
     var sleightOfHand = document.getElementById("sleight-of-hand");
     var sleightOfHandValue = Math.floor((Number(player.dex) - 10) / 2) + Number(player.sleightOfHand);
-    sleightOfHand.innerHTML = sleightOfHandValue;
+    if (sleightOfHandValue > 0) {sign = "+"} else {sign = ""};
+    sleightOfHand.innerHTML = sign + sleightOfHandValue;
     
     var stealth = document.getElementById("stealth");
     var stealthValue = Math.floor((Number(player.dex) - 10) / 2) + Number(player.stealth);
-    stealth.innerHTML = stealthValue;
+    if (stealthValue > 0) {sign = "+"} else {sign = ""};
+    stealth.innerHTML = sign + stealthValue;
     
     var survival = document.getElementById("survival");
     var survivalValue = Math.floor((Number(player.wis) - 10) / 2) + Number(player.survival);
-    survival.innerHTML = survivalValue;
+    if (survivalValue > 0) {sign = "+"} else {sign = ""};
+    survival.innerHTML = sign + survivalValue;
 
 }
 
@@ -1151,10 +1180,12 @@ function applyCleric() {
 }
 
 function applyDruid() {
+    if (player.languages.includes("Druidic")) {} else {
+    player.languages.push("Druidic");}
+
     if ((player.class === 'Druid' && player.classLevels >= 1) ||
         (player.secondClass === 'Druid' && player.secondClassLevels >= 1)) {
         player.utilities.push("Spellcasting (Druid)");
-        player.languages.push("Druidic");
     }
     if ((player.class === 'Druid' && player.classLevels >= 2) ||
         (player.secondClass === 'Druid' && player.secondClassLevels >= 2)) {
@@ -1280,11 +1311,10 @@ function applyMonk() {
     }
     if ((player.class === 'Monk' && player.classLevels >= 10) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 10)) {
-        player.utilities.push("Purity of Body");
-        if ((player.class === 'Monk' && player.classLevels < 14) ||
-        (player.secondClass === 'Monk' && player.secondClassLevels < 14)) {
+        player.utilities.push("Purity of Body");}
+    if ((player.class === 'Monk' && player.classLevels < 14 && player.classLevels >= 10) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels < 14 && player.secondClassLevels >= 10)) {
         player.utilities.push("Unarmored Movement (20ft)");}
-    }
     if ((player.class === 'Monk' && player.classLevels >= 13) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 13)) {
         player.utilities.push("Tongue of the Sun and Moon");
@@ -1292,10 +1322,10 @@ function applyMonk() {
     if ((player.class === 'Monk' && player.classLevels >= 14) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 14)) {
         player.utilities.push("Diamond Soul (Ki)");
-        if ((player.class === 'Monk' && player.classLevels < 18) ||
-        (player.secondClass === 'Monk' && player.secondClassLevels < 18)) {
-        player.utilities.push("Unarmored Movement (25ft)");}
     }
+    if ((player.class === 'Monk' && player.classLevels < 18 && player.classLevels >= 14) ||
+        (player.secondClass === 'Monk' && player.secondClassLevels < 18 && player.secondClassLevels >= 14)) {
+        player.utilities.push("Unarmored Movement (25ft)");}
     if ((player.class === 'Monk' && player.classLevels >= 15) ||
         (player.secondClass === 'Monk' && player.secondClassLevels >= 15)) {
         player.utilities.push("Timeless Body");

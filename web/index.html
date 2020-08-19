@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="raceDropdown"></label>
                         <select class="form-control" id="raceDropdown"
-                            onchange="refreshEverything(); raceLanguages(); showSubrace();">
+                            onchange="calcAbRaceBonus(); refreshEverything(); raceLanguages(); showSubrace();">
                             <option>Race</option>
                             <option>Changeling</option>
                             <option>Dragonborn</option>
@@ -49,7 +49,7 @@
                     <div class="form-group">
                         <label for="subrace-dropdown"></label>
                         <select class="form-control" id="subrace-dropdown" onload="refreshSubrace()"
-                            onchange="refreshEverything();">
+                            onchange="calcAbRaceBonus(); refreshEverything();">
                             <option>Subrace</option>
                         </select>
                     </div>
@@ -641,8 +641,14 @@
                 <div class="col col-3">
                     <p id="output-player-subrace" class="p-inline">Player Subrace</p>
                     <p id="output-player-race" class="p-inline">Player Race</p>
-                    <p>Level <span id="output-class-one-level">#</span> <span id="output-class-one-sub">Subclass</span> <span id="output-class-one">Class</span></p>
-                    <p>Level <span id="output-class-two-level">#</span> <span id="output-class-two-sub">Subclass</span> <span id="output-class-two">Class</span></p>
+                    <p> 
+                        <span id="output-class-one-level">#</span> 
+                        <span id="output-class-one-sub">Subclass</span> 
+                        <span id="output-class-one">Class</span></p>
+                    <p> 
+                        <span id="output-class-two-level">#</span> 
+                        <span id="output-class-two-sub">Subclass</span> 
+                        <span id="output-class-two">Class</span></p>
                     <p id="output-player-background">Player Background</p>
                 </div>
                 <div class="col col-3">
