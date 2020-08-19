@@ -31,11 +31,45 @@ let player = {
     chaMod: 0,
     skillProficiencies: [],
     toolProficiencies: [],
+    instrumentProficiencies: [],
+    gamingProficiencies: [],
     utilities: [],
     spells: [],
     tools: [],
     languages: []
 }
+
+const allSkills = [
+    "Acrobatics","Animal Handling","Arcana","Athletics","Deception",
+    "History","Insight","Intimidation","Investigation","Medicine",
+    "Nature","Perception","Performance","Persuasion","Religion",
+    "Sleight of Hand","Stealth","Survival"
+]
+const artisansTools = [
+    "Alchemist's Supplies",
+    "Brewer's Supplies",
+    "Calligrapher's Supplies",
+    "Carpenter's Tools",
+    "Cartographer's Tools",
+    "Cobbler's Tools",
+    "Cook's Utensils",
+    "Glassblower's Tools",
+    "Jeweler's Tools",
+    "Leatherworker's Tools",
+    "Mason's Tools",
+    "Painter's Supplies",
+    "Potter's Tools",
+    "Smith's Tools",
+    "Tinker's Tools",
+    "Weaver's Tools",
+    "Woodcarver's Tools"
+]
+const allInstruments = [
+    "Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol"
+]
+const gamingSets = [
+    "Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"
+]
 
 const subraceDropdown = document.getElementById("subrace-dropdown")
 const subraceColumn = document.getElementById("subrace-column")
@@ -714,31 +748,27 @@ function bgLanguageTwoOptions() {
         player.languages.push(bgLangTwoOptions.value) }
 }
 
+function applyBGSkillOne() {
+    if (bgSkillOneOptions.value != "Pick Skill") {
+        player.skillProficiencies.push(bgSkillOneOptions.value)
+    }
+}
+function applyBGSkillTwo() {
+    if (bgSkillTwoOptions.value != "Pick Skill") {
+        player.skillProficiencies.push(bgSkillTwoOptions.value)
+    }
+}
+
 function resetBackgrounds() {
     bgLangOne.classList.add("collapse");
     bgLangTwo.classList.add("collapse");
     bgSkillOne.classList.add("collapse");
     bgSkillTwo.classList.add("collapse");
+    while (bgToolOneOptions.firstChild) {bgToolOneOptions.removeChild(bgToolOneOptions.firstChild)};
+    while (bgToolTwoOptions.firstChild) {bgToolTwoOptions.removeChild(bgToolTwoOptions.firstChild)};
     bgToolOne.classList.add("collapse");
     bgToolTwo.classList.add("collapse");
-    player.acrobatics =false;
-    player.animalHandling =false;
-    player.arcana =false;
-    player.athletics =false;
-    player.deception =false;
-    player.history =false;
-    player.insight =false;
-    player.intimidation =false;
-    player.investigation =false;
-    player.medicine =false;
-    player.nature =false;
-    player.perception =false;
-    player.performance =false;
-    player.persuasion =false;
-    player.religion =false;
-    player.sleightOfHand =false;
-    player.stealth =false;
-    player.survival =false;
+    player.skillProficiencies = [];
 }
 
 function showBackgroundOptions() {
@@ -746,55 +776,81 @@ function showBackgroundOptions() {
      if (player.background === 'Acolyte') {
          bgLangOne.classList.remove("collapse");
          bgLangTwo.classList.remove("collapse");
-         player.insight = true;
-         player.religion = true;
+         player.skillProficiencies.push("Insight");
+         player.skillProficiencies.push("Religion");
      } else if (player.background === 'Anthropologist') {
         bgLangOne.classList.remove("collapse");
         bgLangTwo.classList.remove("collapse");
-        player.insight = true;
-        player.religion = true;
+        player.skillProficiencies.push("Insight");
+        player.skillProficiencies.push("Religion");
     } else if (player.background === 'Archaeologist') {
         bgLangOne.classList.remove("collapse");
         bgToolOne.classList.remove("collapse");
-        
-        var pickTools = document.createElement("option");
-        pickTools.innerHTML = "Select Tool";
-        bgToolOneOptions.appendChild(pickTools);
-
-        var chartographerTools = document.createElement("option");
-        chartographerTools.innerHTML = "Cartographer's Tools";
-        bgToolOneOptions.appendChild(chartographerTools);
-
-        var navigatorTools = document.createElement("option");
-        navigatorTools.innerHTML = "Navigator's Tools";
-        bgToolOneOptions.appendChild(navigatorTools);
-
-        player.history = true;
-        player.survival = true;
+        let bgTools = ["Pick a Tool","Cartographer's Tools", "Navigator's Tools"]
+        for (i = 0; i < bgTools.length; i ++) {
+            let toolOption = document.createElement("option");
+            toolOption.innerHTML = bgTools[i]
+            bgToolOneOptions.appendChild(toolOption)
+        }
+        player.skillProficiencies.push("History");
+        player.skillProficiencies.push("Survival");
     } else if (player.background === 'Athlete') {
         bgLangOne.classList.remove("collapse");
-        player.acrobatics = true;
-        player.athletics = true;
-        player.vehiclesLand = true;
+        player.skillProficiencies.push("Acrobatics");
+        player.skillProficiencies.push("Athletics");
+        player.toolProficiencies.push("Land Vehicles");
     } else if (player.background === 'Charlatan') {
-        player.deception = true;
-        player.sleightOfHand = true;
-        player.disguiseKit = true;
-        player.forgeryKit = true;
+        player.skillProficiencies.push("Deception");
+        player.skillProficiencies.push("Sleight of Hand");
+        player.toolProficiencies.push("Disguise Kit");
+        player.toolProficiencies.push("Forgery Kit");
     } else if (player.background === 'City Watch / Investigator') {
         bgLangOne.classList.remove("collapse");
         bgLangTwo.classList.remove("collapse");
-        player.athletics = true;
-        player.insight = true;
-    } else if (player.background === 'City Watch / Investigator') {
+        player.skillProficiencies.push("Athletics");
+        player.skillProficiencies.push("Insight");
+    } else if (player.background === 'Entertainer') {
+        player.toolProficiencies.push("Disguise Kit");
+        player.skillProficiencies.push("Acrobatics");
+        player.skillProficiencies.push("Performance");
+    } else if (player.background === 'Faction Agent') {
         bgLangOne.classList.remove("collapse");
         bgLangTwo.classList.remove("collapse");
-        player.athletics = true;
-        player.insight = true;
+        bgSkillOne.classList.remove("collapse")
+        player.skillProficiencies.push("Insight");
+    } else if (player.background === 'Far Traveler') {
+        player.skillProficiencies.push("Insight");
+        player.skillProficiencies.push("Perception");
+        bgLangOne.classList.remove("collapse");
+        bgToolOne.classList.remove("collapse");
+        let bgTools = ["Pick a Tool"].concat(allInstruments.concat(gamingSets));
+        for (i = 0; i < bgTools.length; i ++) {
+            let toolOption = document.createElement("option");
+            toolOption.innerHTML = bgTools[i]
+            bgToolOneOptions.appendChild(toolOption)
+        }
+    } else if (player.background === 'Gladiator') {
+        player.skillProficiencies.push("Insight");
+        player.skillProficiencies.push("Perception");
+        bgToolOne.classList.remove("collapse");
+        let bgTools = ["Pick a Tool"].concat(allInstruments);
+        for (i = 0; i < bgTools.length; i ++) {
+            let toolOption = document.createElement("option");
+            toolOption.innerHTML = bgTools[i]
+            bgToolOneOptions.appendChild(toolOption)
+        }
+    } else if (player.background === 'Guild Artisan / Guild Merchant') {
+        player.skillProficiencies.push("Insight");
+        player.skillProficiencies.push("Persuasion");
+        bgLangOneOptions.classList.remove("collapse");
+        bgToolOne.classList.remove("collapse");
+        let bgTools = ["Pick a Tool"].concat(allInstruments);
+        for (i = 0; i < bgTools.length; i ++) {
+            let toolOption = document.createElement("option");
+            toolOption.innerHTML = bgTools[i]
+            bgToolOneOptions.appendChild(toolOption)
+        }
     }
-
-
-    refreshSkillScores();
 }
 
 const subclassOne = document.getElementById("subclass-one")
