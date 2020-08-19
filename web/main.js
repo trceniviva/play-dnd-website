@@ -29,55 +29,8 @@ let player = {
     intMod: 0,
     wisMod: 0,
     chaMod: 0,
-    abyssal: false,
-    celestial: false,
-    common: false,
-    daelkyr: false,
-    deepSpeech: false,
-    draconic: false,
-    dwarvish: false,
-    elvish: false,
-    giant: false,
-    gith: false,
-    gnomish: false,
-    goblin: false,
-    halfling: false,
-    infernal: false,
-    kraul: false,
-    leonin: false,
-    loxodon: false,
-    marquesian: false,
-    minotaur: false,
-    naush: false,
-    orc: false,
-    primordial: false,
-    quori: false,
-    riedran: false,
-    sylvan: false,
-    undercommon: false,
-    vedalken: false,
-    zemnian: false,
-    acrobatics: false,
-    animalHandling: false,
-    arcana: false,
-    athletics: false,
-    deception: false,
-    history: false,
-    insight: false,
-    intimidation: false,
-    investigation: false,
-    medicine: false,
-    nature: false,
-    perception: false,
-    performance: false,
-    persuasion: false,
-    religion: false,
-    sleightOfHand: false,
-    stealth: false,
-    survival: false,
-    vehiclesLand: false,
-    disguiseKit: false,
-    forgeryKit: false,
+    skillProficiencies: [],
+    toolProficiencies: [],
     utilities: [],
     spells: [],
     tools: [],
@@ -170,34 +123,7 @@ const vedalken_i = document.querySelectorAll(".language-vedalken")
 const zemnian_i = document.querySelectorAll(".language-zemnian")
 
 function setLanguagesFalse() {
-    player.abyssal = false;
-    player.celestial = false;
-    if (player.race === 'Kenku') {player.common = false} else {player.common = true};
-    player.daelkyr = false;
-    player.deepSpeech = false;
-    player.draconic = false;
-    player.dwarvish = false;
-    player.elvish = false;
-    player.giant = false;
-    player.gith = false;
-    player.gnomish = false;
-    player.goblin = false;
-    player.halfling = false;
-    player.infernal = false;
-    player.kraul = false;
-    player.leonin = false;
-    player.loxodon = false;
-    player.marquesian = false;
-    player.minotaur = false;
-    player.naush = false;
-    player.orc = false;
-    player.primordial = false;
-    player.quori = false;
-    player.riedran = false;
-    player.sylvan = false;
-    player.undercommon = false;
-    player.vedalken = false;
-    player.zemnian = false
+    player.languages = [];
 }
 
 function showAllLanguages() {
@@ -283,131 +209,115 @@ function showAllLanguages() {
 
 function hideAppropriateLanguages() {
     showAllLanguages();
-    if (player.abyssal=== true) {
+    if (player.languages.includes("Abyssal") === true) {
         for (i=0; i< abyssal_i.length; ++i) {abyssal_i[i].classList.add("hide-element")};};
-    if (player.celestial=== true) {
+    if (player.languages.includes("Celestial")=== true) {
             for (i=0; i< celestial_i.length; ++i) {celestial_i[i].classList.add("hide-element")};};
-    if (player.common=== true) {
+    if (player.languages.includes("Common") === true) {
             for (i=0; i< common_i.length; ++i) {common_i[i].classList.add("hide-element")};};
-    if (player.daelkyr=== true) {
+    if (player.languages.includes("Daelkyr") === true) {
             for (i=0; i< daelkyr_i.length; ++i) {daelkyr_i[i].classList.add("hide-element")};};
-    if (player.deepspeech=== true) {
+    if (player.languages.includes("Deepspeech") === true) {
             for (i=0; i< deepspeech_i.length; ++i) {deepspeech_i[i].classList.add("hide-element")};};
-    if (player.draconic=== true) {
+    if (player.languages.includes("Draconic") === true) {
             for (i=0; i< draconic_i.length; ++i) {draconic_i[i].classList.add("hide-element")};};
-    if (player.dwarvish=== true) {
+    if (player.languages.includes("Dwarvish")=== true) {
             for (i=0; i< dwarvish_i.length; ++i) {dwarvish_i[i].classList.add("hide-element")};};
-    if (player.elvish=== true) {
+    if (player.languages.includes("Elvish") === true) {
             for (i=0; i< elvish_i.length; ++i) {elvish_i[i].classList.add("hide-element")};};
-    if (player.giant=== true) {
+    if (player.languages.includes("Giant") === true) {
             for (i=0; i< giant_i.length; ++i) {giant_i[i].classList.add("hide-element")};};
-    if (player.gith=== true) {
+    if (player.languages.includes("Gith") === true) {
             for (i=0; i< gith_i.length; ++i) {gith_i[i].classList.add("hide-element")};};
-    if (player.gnomish=== true) {
+    if (player.languages.includes("Gnomish") === true) {
             for (i=0; i< gnomish_i.length; ++i) {gnomish_i[i].classList.add("hide-element")};};
-    if (player.goblin=== true) {
+    if (player.languages.includes("Goblin") === true) {
             for (i=0; i< goblin_i.length; ++i) {goblin_i[i].classList.add("hide-element")};};
-    if (player.halfling=== true) {
+    if (player.languages.includes("Halfling") === true) {
             for (i=0; i< halfling_i.length; ++i) {halfling_i[i].classList.add("hide-element")};};
-    if (player.infernal=== true) {
+    if (player.languages.includes("Infernal") === true) {
             for (i=0; i< infernal_i.length; ++i) {infernal_i[i].classList.add("hide-element")};};
-    if (player.kraul=== true) {
+    if (player.languages.includes("Kraul") === true) {
             for (i=0; i< kraul_i.length; ++i) {kraul_i[i].classList.add("hide-element")};};
-    if (player.leonin=== true) {
+    if (player.languages.includes("Leonin") === true) {
             for (i=0; i< leonin_i.length; ++i) {leonin_i[i].classList.add("hide-element")};};
-    if (player.loxodon=== true) {
+    if (player.languages.includes("Loxodon") === true) {
             for (i=0; i< loxodon_i.length; ++i) {loxodon_i[i].classList.add("hide-element")};};
-    if (player.marquesian=== true) {
+    if (player.languages.includes("Marquesian") === true) {
             for (i=0; i< marquesian_i.length; ++i) {marquesian_i[i].classList.add("hide-element")};};
-    if (player.minotaur=== true) {
+    if (player.languages.includes("Minotaur") === true) {
             for (i=0; i< minotaur_i.length; ++i) {minotaur_i[i].classList.add("hide-element")};};
-    if (player.naush=== true) {
+    if (player.languages.includes("Naush")=== true) {
             for (i=0; i< naush_i.length; ++i) {naush_i[i].classList.add("hide-element")};};
-    if (player.orc=== true) {
+    if (player.languages.includes("Orc") === true) {
             for (i=0; i< orc_i.length; ++i) {orc_i[i].classList.add("hide-element")};};
-    if (player.primordial=== true) {
+    if (player.languages.includes("Primordial") === true) {
             for (i=0; i< primordial_i.length; ++i) {primordial_i[i].classList.add("hide-element")};};
-    if (player.quori=== true) {
+    if (player.languages.includes("Quori") === true) {
             for (i=0; i< quori_i.length; ++i) {quori_i[i].classList.add("hide-element")};};
-    if (player.riedran=== true) {
+    if (player.languages.includes("Riedran") === true) {
             for (i=0; i< riedran_i.length; ++i) {riedran_i[i].classList.add("hide-element")};};
-    if (player.sylvan=== true) {
+    if (player.languages.includes("Sylvan") === true) {
             for (i=0; i< sylvan_i.length; ++i) {sylvan_i[i].classList.add("hide-element")};};
-    if (player.undercommon=== true) {
+    if (player.languages.includes("Undercommon") === true) {
             for (i=0; i< undercommon_i.length; ++i) {undercommon_i[i].classList.add("hide-element")};};
-    if (player.vedalken=== true) {
+    if (player.languages.includes("Vedalken") === true) {
             for (i=0; i< vedalken_i.length; ++i) {vedalken_i[i].classList.add("hide-element")};};
-    if (player.zemnian=== true) {
+    if (player.languages.includes("Zemnian") === true) {
             for (i=0; i< zemnian_i.length; ++i) {zemnian_i[i].classList.add("hide-element")};};
 }
+
+const langList = document.getElementById("languages-list");
 
 function raceLanguages() {
     raceLangOne.classList.add("collapse");
     raceLangTwo.classList.add("collapse");
     showAllLanguages();
     if (player.race === "Changeling") {
-        player.common = true;
         player.languages.push("Common");
         raceLangOne.classList.remove("collapse");
         raceLangTwo.classList.remove("collapse");
     }
     else if (player.race === "Dragonborn") {
-        player.common = true;
-        player.draconic = true;
         player.languages.push("Common");
         player.languages.push("Draconic");
     }
     else if (player.race === "Dwarf") {
-        player.common = true;
-        player.dwarvish = true;
         player.languages.push("Common");
         player.languages.push("Dwarvish");
     }
     else if (player.race === "Elf") {
-        player.common = true;
-        player.elvish = true;
         player.languages.push("Common");
         player.languages.push("Elvish");
     }
     else if (player.race === "Genasi") {
-        player.common = true;
-        player.primordial = true;
         player.languages.push("Common");
         player.languages.push("Primordial");
     }
     else if (player.race === "Gnome") {
-        player.common = true;
-        player.gnomish = true;
         player.languages.push("Common");
         player.languages.push("Gnomish");
     }
     else if (player.race === "Goliath") {
-        player.common = true;
-        player.giant = true;
         player.languages.push("Common");
         player.languages.push("Giant");
     }
     else if (player.race === "Half-elf") {
-        player.common = true;
-        player.elvish = true;
         player.languages.push("Common");
         player.languages.push("Elvish");
         raceLangOne.classList.remove("collapse");
     }
     else if (player.race === "Half-orc") {
         player.common = true;
-        player.orc = true;
         player.languages.push("Common");
         player.languages.push("Orc");
     }
     else if (player.race === "Halfling") {
-        player.common = true;
-        player.halfling = true;
         player.languages.push("Common");
         player.languages.push("Halfling");
     }
     else if (player.race === "Human") {
-        player.common = true;
+        player.languages.push("Common");
         raceLangOne.classList.remove("collapse");
     }
     else if (player.race === "Kenku") {
@@ -463,75 +373,44 @@ function raceLanguages() {
     hideAppropriateLanguages();
 }
 
+function classLanguages() {
+    if (player.class === 'Druid'){
+    if (player.languages.includes("Druidic")) {} else {
+        player.languages.push("Druidic");}}
+}
+
 function raceLanguageOneOptions() {
-    if (raceLangOneOptions.value === 'Abyssal') {player.abyssal = true}
-    else if (raceLangOneOptions.value === 'Celestial') {player.celestial = true}
-    else if (raceLangOneOptions.value === 'Common') {player.common = true}
-    else if (raceLangOneOptions.value === 'Daelkyr') {player.daelkyr = true}
-    else if (raceLangOneOptions.value === 'DeepSpeech') {player.deepSpeech = true}
-    else if (raceLangOneOptions.value === 'Draconic') {player.draconic = true}
-    else if (raceLangOneOptions.value === 'Dwarvish') {player.dwarvish = true}
-    else if (raceLangOneOptions.value === 'Elvish') {player.elvish = true}
-    else if (raceLangOneOptions.value === 'Giant') {player.giant = true}
-    else if (raceLangOneOptions.value === 'Gith') {player.gith = true}
-    else if (raceLangOneOptions.value === 'Gnomish') {player.gnomish = true}
-    else if (raceLangOneOptions.value === 'Goblin') {player.goblin = true}
-    else if (raceLangOneOptions.value === 'Halfling') {player.halfling = true}
-    else if (raceLangOneOptions.value === 'Infernal') {player.infernal = true}
-    else if (raceLangOneOptions.value === 'Kraul') {player.kraul = true}
-    else if (raceLangOneOptions.value === 'Leonin') {player.leonin = true}
-    else if (raceLangOneOptions.value === 'Loxodon') {player.loxodon = true}
-    else if (raceLangOneOptions.value === 'Marquesian') {player.marquesian = true}
-    else if (raceLangOneOptions.value === 'Minotaur') {player.minotaur = true}
-    else if (raceLangOneOptions.value === 'Naush') {player.naush = true}
-    else if (raceLangOneOptions.value === 'Orc') {player.orc = true}
-    else if (raceLangOneOptions.value === 'Primordial') {player.primordial = true}
-    else if (raceLangOneOptions.value === 'Quori') {player.quori = true}
-    else if (raceLangOneOptions.value === 'Riedran') {player.riedran = true}
-    else if (raceLangOneOptions.value === 'Sylvan') {player.sylvan = true}
-    else if (raceLangOneOptions.value === 'Undercommon') {player.undercommon = true}
-    else if (raceLangOneOptions.value === 'Vedalken') {player.vedalken = true}
-    else if (raceLangOneOptions.value === 'Zemnian') {player.zemnian = true};
+    if (raceLangOneOptions.value != "Pick Language") {
+    player.languages.push(raceLangOneOptions.value);}
 }
 
 function raceLanguageTwoOptions() {
-    
-    if (raceLangTwoOptions.value === 'Abyssal') {player.abyssal = true}
-    else if (raceLangTwoOptions.value === 'Celestial') {player.celestial = true}
-    else if (raceLangTwoOptions.value === 'Common') {player.common = true}
-    else if (raceLangTwoOptions.value === 'Daelkyr') {player.daelkyr = true}
-    else if (raceLangTwoOptions.value === 'DeepSpeech') {player.deepSpeech = true}
-    else if (raceLangTwoOptions.value === 'Draconic') {player.draconic = true}
-    else if (raceLangTwoOptions.value === 'Dwarvish') {player.dwarvish = true}
-    else if (raceLangTwoOptions.value === 'Elvish') {player.elvish = true}
-    else if (raceLangTwoOptions.value === 'Giant') {player.giant = true}
-    else if (raceLangTwoOptions.value === 'Gith') {player.gith = true}
-    else if (raceLangTwoOptions.value === 'Gnomish') {player.gnomish = true}
-    else if (raceLangTwoOptions.value === 'Goblin') {player.goblin = true}
-    else if (raceLangTwoOptions.value === 'Halfling') {player.halfling = true}
-    else if (raceLangTwoOptions.value === 'Infernal') {player.infernal = true}
-    else if (raceLangTwoOptions.value === 'Kraul') {player.kraul = true}
-    else if (raceLangTwoOptions.value === 'Leonin') {player.leonin = true}
-    else if (raceLangTwoOptions.value === 'Loxodon') {player.loxodon = true}
-    else if (raceLangTwoOptions.value === 'Marquesian') {player.marquesian = true}
-    else if (raceLangTwoOptions.value === 'Minotaur') {player.minotaur = true}
-    else if (raceLangTwoOptions.value === 'Naush') {player.naush = true}
-    else if (raceLangTwoOptions.value === 'Orc') {player.orc = true}
-    else if (raceLangTwoOptions.value === 'Primordial') {player.primordial = true}
-    else if (raceLangTwoOptions.value === 'Quori') {player.quori = true}
-    else if (raceLangTwoOptions.value === 'Riedran') {player.riedran = true}
-    else if (raceLangTwoOptions.value === 'Sylvan') {player.sylvan = true}
-    else if (raceLangTwoOptions.value === 'Undercommon') {player.undercommon = true}
-    else if (raceLangTwoOptions.value === 'Vedalken') {player.vedalken = true}
-    else if (raceLangTwoOptions.value === 'Zemnian') {player.zemnian = true};
+    if (raceLangTwoOptions.value != "Pick Language") {
+        player.languages.push(raceLangTwoOptions.value);}
+}
+
+function pushLanguages () {
+    for (i=0; i<player.languages.length; ++i) {
+        var langKnown = document.createElement("li");
+        langKnown.innerHTML = player.languages[i];
+        langKnown.classList.add("list-group-item");
+        langKnown.classList.add("skill-name");
+        langKnown.classList.add("pt-0");
+        langKnown.classList.add("pb-0");
+        langKnown.classList.add("font-weight-light");
+        langList.appendChild(langKnown)}
 }
 
 function refreshAllLanguages () {
+    langList.innerHTML ="Languages";
     setLanguagesFalse();
+    raceLanguages();
+    classLanguages();
     raceLanguageOneOptions();
     raceLanguageTwoOptions();
     bgLanguageOneOptions();
     bgLanguageTwoOptions();
+    pushLanguages ();
     hideAppropriateLanguages();
 }
 
@@ -826,65 +705,13 @@ const bgToolTwo = document.getElementById("bg-tool-two")
 const bgToolTwoOptions = document.getElementById("bg-tool-two-drop")
 
 function bgLanguageOneOptions() {
-    if (bgLangOneOptions.value === 'Abyssal') {player.abyssal = true}
-    else if (bgLangOneOptions.value === 'Celestial') {player.celestial = true}
-    else if (bgLangOneOptions.value === 'Common') {player.common = true}
-    else if (bgLangOneOptions.value === 'Daelkyr') {player.daelkyr = true}
-    else if (bgLangOneOptions.value === 'DeepSpeech') {player.deepSpeech = true}
-    else if (bgLangOneOptions.value === 'Draconic') {player.draconic = true}
-    else if (bgLangOneOptions.value === 'Dwarvish') {player.dwarvish = true}
-    else if (bgLangOneOptions.value === 'Elvish') {player.elvish = true}
-    else if (bgLangOneOptions.value === 'Giant') {player.giant = true}
-    else if (bgLangOneOptions.value === 'Gith') {player.gith = true}
-    else if (bgLangOneOptions.value === 'Gnomish') {player.gnomish = true}
-    else if (bgLangOneOptions.value === 'Goblin') {player.goblin = true}
-    else if (bgLangOneOptions.value === 'Halfling') {player.halfling = true}
-    else if (bgLangOneOptions.value === 'Infernal') {player.infernal = true}
-    else if (bgLangOneOptions.value === 'Kraul') {player.kraul = true}
-    else if (bgLangOneOptions.value === 'Leonin') {player.leonin = true}
-    else if (bgLangOneOptions.value === 'Loxodon') {player.loxodon = true}
-    else if (bgLangOneOptions.value === 'Marquesian') {player.marquesian = true}
-    else if (bgLangOneOptions.value === 'Minotaur') {player.minotaur = true}
-    else if (bgLangOneOptions.value === 'Naush') {player.naush = true}
-    else if (bgLangOneOptions.value === 'Orc') {player.orc = true}
-    else if (bgLangOneOptions.value === 'Primordial') {player.primordial = true}
-    else if (bgLangOneOptions.value === 'Quori') {player.quori = true}
-    else if (bgLangOneOptions.value === 'Riedran') {player.riedran = true}
-    else if (bgLangOneOptions.value === 'Sylvan') {player.sylvan = true}
-    else if (bgLangOneOptions.value === 'Undercommon') {player.undercommon = true}
-    else if (bgLangOneOptions.value === 'Vedalken') {player.vedalken = true}
-    else if (bgLangOneOptions.value === 'Zemnian') {player.zemnian = true};
+    if (bgLangOneOptions.value != "Pick Language") {
+        player.languages.push(bgLangOneOptions.value) }
 }
 
 function bgLanguageTwoOptions() {
-    if (bgLangTwoOptions.value === 'Abyssal') {player.abyssal = true}
-    else if (bgLangTwoOptions.value === 'Celestial') {player.celestial = true}
-    else if (bgLangTwoOptions.value === 'Common') {player.common = true}
-    else if (bgLangTwoOptions.value === 'Daelkyr') {player.daelkyr = true}
-    else if (bgLangTwoOptions.value === 'DeepSpeech') {player.deepSpeech = true}
-    else if (bgLangTwoOptions.value === 'Draconic') {player.draconic = true}
-    else if (bgLangTwoOptions.value === 'Dwarvish') {player.dwarvish = true}
-    else if (bgLangTwoOptions.value === 'Elvish') {player.elvish = true}
-    else if (bgLangTwoOptions.value === 'Giant') {player.giant = true}
-    else if (bgLangTwoOptions.value === 'Gith') {player.gith = true}
-    else if (bgLangTwoOptions.value === 'Gnomish') {player.gnomish = true}
-    else if (bgLangTwoOptions.value === 'Goblin') {player.goblin = true}
-    else if (bgLangTwoOptions.value === 'Halfling') {player.halfling = true}
-    else if (bgLangTwoOptions.value === 'Infernal') {player.infernal = true}
-    else if (bgLangTwoOptions.value === 'Kraul') {player.kraul = true}
-    else if (bgLangTwoOptions.value === 'Leonin') {player.leonin = true}
-    else if (bgLangTwoOptions.value === 'Loxodon') {player.loxodon = true}
-    else if (bgLangTwoOptions.value === 'Marquesian') {player.marquesian = true}
-    else if (bgLangTwoOptions.value === 'Minotaur') {player.minotaur = true}
-    else if (bgLangTwoOptions.value === 'Naush') {player.naush = true}
-    else if (bgLangTwoOptions.value === 'Orc') {player.orc = true}
-    else if (bgLangTwoOptions.value === 'Primordial') {player.primordial = true}
-    else if (bgLangTwoOptions.value === 'Quori') {player.quori = true}
-    else if (bgLangTwoOptions.value === 'Riedran') {player.riedran = true}
-    else if (bgLangTwoOptions.value === 'Sylvan') {player.sylvan = true}
-    else if (bgLangTwoOptions.value === 'Undercommon') {player.undercommon = true}
-    else if (bgLangTwoOptions.value === 'Vedalken') {player.vedalken = true}
-    else if (bgLangTwoOptions.value === 'Zemnian') {player.zemnian = true};
+    if (bgLangTwoOptions.value != "Pick Language") {
+        player.languages.push(bgLangTwoOptions.value) }
 }
 
 function resetBackgrounds() {
@@ -1180,9 +1007,6 @@ function applyCleric() {
 }
 
 function applyDruid() {
-    if (player.languages.includes("Druidic")) {} else {
-    player.languages.push("Druidic");}
-
     if ((player.class === 'Druid' && player.classLevels >= 1) ||
         (player.secondClass === 'Druid' && player.secondClassLevels >= 1)) {
         player.utilities.push("Spellcasting (Druid)");

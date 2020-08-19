@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="raceDropdown"></label>
                         <select class="form-control" id="raceDropdown"
-                            onchange="calcAbRaceBonus(); refreshEverything(); raceLanguages(); showSubrace();">
+                            onchange="calcAbRaceBonus(); refreshEverything(); showSubrace();">
                             <option>Race</option>
                             <option>Changeling</option>
                             <option>Dragonborn</option>
@@ -60,7 +60,7 @@
             <div class="col col-2" id="class-one">
                 <div class="form-group">
                     <label for="classOneDropdown"></label>
-                    <select class="form-control" id="classOneDropdown" onchange="refreshCore();applyClasses();">
+                    <select class="form-control" id="classOneDropdown" onchange="refreshEverything();applyClasses();">
                         <option>Class</option>
                         <option>Artificer</option>
                         <option>Barbarian</option>
@@ -655,9 +655,9 @@
                     <ul class="list-group list-group-flush font-weight-bold" id="utilities-list">Player Utilities</ul>
                 </div>
                 <div class="col col-3">
-                    <p>Weapon Proficiencies</p>
-                    <p>Languages</p>
-                    <p>Tool Proficiencies</p>
+                    <ul class="list-group list-group-flush font-weight-bold" id="weapons-list">Weapon Proficiencies</ul>
+                    <ul class="list-group list-group-flush font-weight-bold" id="languages-list">Languages</ul>
+                    <ul class="list-group list-group-flush font-weight-bold" id="tools-list">Tool Proficiencies</ul>
                 </div>
             </div>
         </div>
