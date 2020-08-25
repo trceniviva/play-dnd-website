@@ -544,6 +544,10 @@ let subraceData = [
     }
 ]
 
+let backgroundData = [
+    
+]
+
 let classData = [
     {
         class: "Artificer",
@@ -600,6 +604,7 @@ function setPlayerRace() {
 }
 
 function showSubraceOptions() {
+    document.getElementById("subrace-container").classList.add("hide-element")
     selectSubrace.innerHTML = "";
     if (playerRace.subraces.length > 0) {
         document.getElementById("subrace-container").classList.remove("hide-element");
@@ -644,7 +649,8 @@ function applyClassSkills() {
     if (playerClass.skillsOptions.length > 0) {
         for (var i = 0; i < playerClass.skillsOptions.length; i++) {
             var skillBox = document.getElementById(playerClass.skillsOptions[i].toLowerCase());
-            skillBox.disabled = false;
+            if (skillBox.checked === false) {
+            skillBox.disabled = false;}
         }
     }
 }
