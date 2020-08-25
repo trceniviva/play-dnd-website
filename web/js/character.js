@@ -188,10 +188,10 @@ let raceData = [
         darkvision: true,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ['Acrobatics','Animal Handling','Arcana','Athletics',
+        skillsOptions: ['Acrobatics','AnimalHandling','Arcana','Athletics',
         'Deception','History','Insight','Intimidation','Investigation',
         'Medicine','Nature','Perception','Performance','Persuasion',
-        'Religion','Sleight of Hand','Stealth','Survival']
+        'Religion','SleightofHand','Stealth','Survival']
     },
     {
         race: "Half-orc",
@@ -271,7 +271,7 @@ let raceData = [
         darkvision: false,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ["Acrobatics","Deception","Stealth","Sleight of Hand"]
+        skillsOptions: ["Acrobatics","Deception","Stealth","SleightofHand"]
     },
     {
         race: "Tabaxi",
@@ -351,10 +351,10 @@ let raceData = [
         darkvision: false,
         skills: [],
         countSkillsAdd: 1,
-        skillsOptions: ['Acrobatics','Animal Handling','Arcana','Athletics',
+        skillsOptions: ['Acrobatics','AnimalHandling','Arcana','Athletics',
         'Deception','History','Insight','Intimidation','Investigation',
         'Medicine','Nature','Perception','Performance','Persuasion',
-        'Religion','Sleight of Hand','Stealth','Survival']
+        'Religion','SleightofHand','Stealth','Survival']
     }
 ]
 
@@ -553,14 +553,14 @@ let classData = [
     toolOptions: [],
     skills: [],
     countSkillsAdd: 2,
-    skillsOptions: ["Arcana", "History", "Investigation", "Medicine", "Nature", "Perception", "Sleight of Hand"] 
+    skillsOptions: ["Arcana", "History", "Investigation", "Medicine", "Nature", "Perception", "SleightofHand"] 
 }
 ]
 
 function setPlayerClass() {
     for (i = 0; i < classData.length; i++){
         if (classData[i].class === selectClass.value) {
-            playerClass = classData[i];}}
+            playerClass = classData[i];} else playerClass = []}
         }
 
 function setPlayerRace() {
@@ -591,16 +591,32 @@ function setPlayerSubrace() {
     }
 }
 
-function applySkills() {
-    var skillChecks = document.querySelectorAll(".skill-box")
-    for (i=0; i<skillChecks.length; i++) {skillChecks[i].checked=false; skillChecks[i].disabled=true}
+function resetSkills() {
+    autoProfList.innerHTML = "";
+    var skillChecks = document.querySelectorAll(".skill-box");
+    for (i=0; i<skillChecks.length; i++) {skillChecks[i].checked=false; skillChecks[i].disabled=true};
+}
 
-
-
+function applyRaceSkills() {
+    if (playerRace.skillsOptions.length > 0) {
+        for (i=0; i<playerRace.skillsOptions.length; i++) {
+            var skillBox = document.getElementById(playerRace.skillsOptions[i].toLowerCase());
+            skillBox.disabled = false;
+        }
+    }
     if (playerRace.skills.length > 0) {
         for (i=0; i<playerRace.skills.length; i++) {
             var skillBox = document.getElementById(playerRace.skills[i].toLowerCase());
             skillBox.checked = true;
+        }
+    }
+}
+
+function applyClassSkills() {
+    if (playerClass.skillsOptions.length > 0) {
+        for (i=0; i<playerClass.skillsOptions.length; i++) {
+            var skillBox = document.getElementById(playerClass.skillsOptions[i].toLowerCase());
+            skillBox.disabled = false;
         }
     }
 }

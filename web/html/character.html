@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="race-dropdown">Select race</label>
                         <select class="form-control" id="race-dropdown"
-                            onchange="setPlayerRace();showSubraceOptions(); applySkills();setPlayerSubrace();">
+                            onchange="setPlayerRace(); showSubraceOptions(); applyRaceSkills();">
                             <option>Changeling</option>
                             <option>Dragonborn</option>
                             <option>Dwarf</option>
@@ -43,7 +43,7 @@
                 <div class="col hide-element" id="subrace-container">
                     <div class="form-group">
                         <label for="subrace-dropdown">Subrace</label>
-                        <select class="form-control" id="subrace-dropdown" onchange="setPlayerSubrace();">
+                        <select class="form-control" id="subrace-dropdown" onchange="setPlayerSubrace();applySkills();">
 
                         </select>
                     </div>
@@ -53,7 +53,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="first-class-dropdown">Select Class</label>
-                        <select class="form-control" id="first-class-dropdown" onchange="setPlayerClass();">
+                        <select class="form-control" id="first-class-dropdown" onchange="setPlayerClass();applyClassSkills();">
                             <option>Artificer</option>
                             <option>Barbarian</option>
                             <option>Bard</option>
@@ -106,7 +106,7 @@
                         <label class="form-check-label" for="defaultCheck1">Acrobatics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="animal-handling" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="animalhandling" disabled>
                         <label class="form-check-label" for="defaultCheck1">Animal Handling</label>
                     </div>
                     <div class="form-check">
@@ -162,7 +162,7 @@
                         <label class="form-check-label" for="defaultCheck1">Religion</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="sleight-of-hand" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="sleightofhand" disabled>
                         <label class="form-check-label" for="defaultCheck1">Sleight of Hand</label>
                     </div>
                     <div class="form-check">
