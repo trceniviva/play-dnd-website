@@ -20,7 +20,7 @@
                     <div class="form-group">
                         <label for="race-dropdown">Select race</label>
                         <select class="form-control" id="race-dropdown"
-                            onchange="setPlayerRace();showSubraceOptions(this.value); ">
+                            onchange="setPlayerRace();showSubraceOptions(); applySkills();setPlayerSubrace();">
                             <option>Changeling</option>
                             <option>Dragonborn</option>
                             <option>Dwarf</option>
@@ -43,7 +43,7 @@
                 <div class="col hide-element" id="subrace-container">
                     <div class="form-group">
                         <label for="subrace-dropdown">Subrace</label>
-                        <select class="form-control" id="subrace-dropdown">
+                        <select class="form-control" id="subrace-dropdown" onchange="setPlayerSubrace();">
 
                         </select>
                     </div>
@@ -53,7 +53,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="first-class-dropdown">Select Class</label>
-                        <select class="form-control" id="first-class-dropdown">
+                        <select class="form-control" id="first-class-dropdown" onchange="setPlayerClass();">
                             <option>Artificer</option>
                             <option>Barbarian</option>
                             <option>Bard</option>
@@ -102,75 +102,75 @@
                 <div class="col">
                     <p>Available proficiencies:</p>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="acrobatics" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="acrobatics" disabled>
                         <label class="form-check-label" for="defaultCheck1">Acrobatics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="animal-handling" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="animal-handling" disabled>
                         <label class="form-check-label" for="defaultCheck1">Animal Handling</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="arcana" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="arcana" disabled>
                         <label class="form-check-label" for="defaultCheck1">Arcana</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="athletics" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="athletics" disabled>
                         <label class="form-check-label" for="defaultCheck1">Athletics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="deception" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="deception" disabled>
                         <label class="form-check-label" for="defaultCheck1">Deception</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="history" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="history" disabled>
                         <label class="form-check-label" for="defaultCheck1">History</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="insight" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="insight" disabled>
                         <label class="form-check-label" for="defaultCheck1">Insight</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="intimidation" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="intimidation" disabled>
                         <label class="form-check-label" for="defaultCheck1">Intimidation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="investigation" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="investigation" disabled>
                         <label class="form-check-label" for="defaultCheck1">Investigation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="medicine" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="medicine" disabled>
                         <label class="form-check-label" for="defaultCheck1">Medicine</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="nature" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="nature" disabled>
                         <label class="form-check-label" for="defaultCheck1">Nature</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="perception" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="perception" disabled>
                         <label class="form-check-label" for="defaultCheck1">Perception</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="performance" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="performance" disabled>
                         <label class="form-check-label" for="defaultCheck1">Performance</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="persuasion" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="persuasion" disabled>
                         <label class="form-check-label" for="defaultCheck1">Persuasion</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="religion" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="religion" disabled>
                         <label class="form-check-label" for="defaultCheck1">Religion</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="sleight-of-hand" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="sleight-of-hand" disabled>
                         <label class="form-check-label" for="defaultCheck1">Sleight of Hand</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="stealth" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="stealth" disabled>
                         <label class="form-check-label" for="defaultCheck1">Stealth</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="survival" disabled>
+                        <input class="form-check-input skill-box" type="checkbox" value="" id="survival" disabled>
                         <label class="form-check-label" for="defaultCheck1">Survival</label>
                     </div>
 
