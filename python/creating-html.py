@@ -29,6 +29,9 @@ races = ['Changeling','Dragonborn','Dwarf','Elf','Genasi','Gnome','Goliath',
          'Tortle','Warforged']
 
 for x in races:
+    print("<option>'"+x+"'</option>")
+
+for x in races:
     print ('''else if (player.race === "'''+x+'''") {}''')
 
 for x in races:
