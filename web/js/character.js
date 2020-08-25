@@ -24,6 +24,8 @@ let countLanguagesAvailable = 0;
 let languagesAvailable = [];
 let allLanguages = ['Abyssal', 'Celestial', 'Common', 'Daelkyr', 'DeepSpeech', 'Draconic', 'Dwarvish', 'Elvish', 'Giant', 'Gith', 'Gnomish', 'Goblin', 'Halfling', 'Infernal', 'Kraul', 'Leonin', 'Loxodon', 'Marquesian', 'Minotaur', 'Naush', 'Orc', 'Primordial', 'Quori', 'Riedran', 'Sylvan', 'Undercommon', 'Vedalken', 'Zemnian']
 
+var playerRace
+
 let raceData = [
     {
         race: "Elf",
@@ -353,30 +355,23 @@ let raceData = [
     }
 ]
 
-function showSubraceOptions(race) {
-    var subraceOptions = [];
-    selectSubrace.innerHTML = '';
-
+function setPlayerRace() {
     for (i = 0; i < raceData.length; i++) {
-        if (raceData[i].race === race) {
-            subraceOptions = raceData[i].subraces
+        if (raceData[i].race === selectedRace.value) {
+            playerRace = raceData[i];
         }
     }
-    if (subraceOptions.length > 0) {
-        for (i = 0; i < subraceOptions.length; i++) {
+}
+
+function showSubraceOptions(race) {
+    selectSubrace.innerHTML = "";
+    if (playerRace.subraces.length > 0) {
+        document.getElementById("subrace-container").classList.remove("hide-element");
+        for (i = 0; i < playerRace.subraces.length; i++) {
             var subraceOption = document.createElement("option");
-            subraceOption.innerHTML = subraceOptions[i];
+            subraceOption.innerHTML = playerRace.subraces[i];
             selectSubrace.append(subraceOption);
         }
     }
 }
 
-function raceLanguages(race) {
-    if (race != "Kenku") {
-        player.languages.push("Common");
-        languagesAvailable = [];
-    }
-    if (twoLangRaces.includes(race)) {
-        countLanguagesAvailable += 2;
-    }
-}
