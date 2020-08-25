@@ -27,7 +27,7 @@ let allLanguages = ['Abyssal', 'Celestial', 'Common', 'Daelkyr', 'DeepSpeech', '
 
 var playerRace;
 var playerSubrace;
-var playerClass = {class: "",armor: [],weapons: [],tools: [],countToolsAdd: -1,toolOptions: [],skills: [],countSkillsAdd: -1,skillsOptions:[] };
+var playerClass = { class: "", armor: [], weapons: [], tools: [], countToolsAdd: -1, toolOptions: [], skills: [], countSkillsAdd: -1, skillsOptions: [] };
 
 let raceData = [
     {
@@ -545,7 +545,27 @@ let subraceData = [
 ]
 
 let backgroundData = [
-    
+    {
+        background: "Acolyte",
+        skills: ["Insight", "Religion"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 2,
+        tools: [],
+        countToolsAdd: 1,
+        toolOptions: ["Cartographer's Tools", "Navigator's Tools"]
+    }, {
+        background: "Anthropologist",
+        skills: ["Insight", "Religion"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 2,
+        tools: [],
+        countToolsAdd: 0,
+        toolOptions: []
+    }
 ]
 
 let classData = [
@@ -562,28 +582,28 @@ let classData = [
     },
     {
         class: "Barbarian",
-        armor: ["Light Armor","Medium Armor","Shields"],
-        weapons: ["Simple Weapons","Martial Weapons"],
+        armor: ["Light Armor", "Medium Armor", "Shields"],
+        weapons: ["Simple Weapons", "Martial Weapons"],
         tools: [],
         countToolsAdd: 0,
         toolOptions: [],
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ["AnimalHandling", "Athletics","Intimidation","Nature","Perception","Survival"],
+        skillsOptions: ["AnimalHandling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"],
     },
     {
         class: "Bard",
         armor: ["Light Armor"],
-        weapons: ["Simple Weapons","Hand Crossbows","Longswords","Rapiers","Shortswords"],
+        weapons: ["Simple Weapons", "Hand Crossbows", "Longswords", "Rapiers", "Shortswords"],
         tools: [],
         countToolsAdd: 3,
-        toolOptions: ["Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol"],
+        toolOptions: ["Bagpipes", "Drum", "Dulcimer", "Flute", "Horn", "Lute", "Lyre", "Pan Flute", "Shawm", "Viol"],
         skills: [],
         countSkillsAdd: 3,
-        skillsOptions: ["Acrobatics","AnimalHandling","Arcana","Athletics","Deception",
-        "History","Insight","Intimidation","Investigation","Medicine",
-        "Nature","Perception","Performance","Persuasion","Religion",
-        "SleightofHand","Stealth","Survival"],
+        skillsOptions: ["Acrobatics", "AnimalHandling", "Arcana", "Athletics", "Deception",
+            "History", "Insight", "Intimidation", "Investigation", "Medicine",
+            "Nature", "Perception", "Performance", "Persuasion", "Religion",
+            "SleightofHand", "Stealth", "Survival"],
     }
 ]
 
@@ -591,7 +611,7 @@ function setPlayerClass() {
     for (var i = 0; i < classData.length; i++) {
         if (classData[i].class === selectClass.value) {
             playerClass = classData[i];
-        } 
+        }
     }
 }
 
@@ -650,7 +670,8 @@ function applyClassSkills() {
         for (var i = 0; i < playerClass.skillsOptions.length; i++) {
             var skillBox = document.getElementById(playerClass.skillsOptions[i].toLowerCase());
             if (skillBox.checked === false) {
-            skillBox.disabled = false;}
+                skillBox.disabled = false;
+            }
         }
     }
 }

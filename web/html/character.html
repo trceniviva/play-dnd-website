@@ -15,11 +15,12 @@
     <p>The first step to playing Dungeons and Dragons is creating a character.</p>
     <div class="container">
         <form>
-            <div class="row">
+            <div class="form-row">
                 <div class="col">
                     <div class="form-group">
                         <label for="race-dropdown">Select Race</label>
                         <select class="form-control" id="race-dropdown"
+                        onload="setPlayerRace();"
                             onchange="setPlayerRace(); showSubraceOptions();">
                             <option>Changeling</option>
                             <option>Dragonborn</option>
@@ -50,27 +51,26 @@
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="backgroundDropdown">Background</label>
-                        <select class="form-control" id="backgroundDropdown"
-                            onchange="refreshEverything(); showBackgroundOptions()">
-                            <div class="dropdown-menu" aria-labelledby="backgroundDropdown">
+                        <label for="background-dropdown">Background</label>
+                        <select class="form-control" id="background-dropdown">
+                            <div class="dropdown-menu" aria-labelledby="background-dropdown">
                                 <option>Acolyte</option>
                                 <option>Anthropologist</option>
                                 <option>Archaeologist</option>
                                 <option>Athlete</option>
                                 <option>Charlatan</option>
-                                <option>City Watch / Investigator</option>
+                                <option>City Watch/Investigator</option>
                                 <option>Clan Crafter</option>
                                 <option>Cloistered Scholar</option>
                                 <option>Courtier</option>
-                                <option>Criminal / Spy</option>
+                                <option>Criminal/Spy</option>
                                 <option>Entertainer</option>
                                 <option>Faction Agent</option>
                                 <option>Far Traveler</option>
                                 <option>Fisher</option>
                                 <option>Folk Hero</option>
                                 <option>Gladiator</option>
-                                <option>Guild Artisan / Guild Merchant</option>
+                                <option>Guild Artisan/Merchant</option>
                                 <option>Haunted One</option>
                                 <option>Hermit</option>
                                 <option>Inheritor</option>
@@ -92,11 +92,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="form-row">
                 <div class="col">
                     <div class="form-group">
                         <label for="first-class-dropdown">Select Class</label>
-                        <select class="form-control" id="first-class-dropdown" onchange="setPlayerClass();">
+                        <select class="form-control" id="first-class-dropdown" onload="setPlayerClass();"
+                        onchange="setPlayerClass()">
                             <option>Artificer</option>
                             <option>Barbarian</option>
                             <option>Bard</option>
@@ -240,7 +241,7 @@
                     </select>
                 </div>
             </div>
-            <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="resetSkills(); applyRaceSkills(); applyClassSkills();">Refresh</button>
+            <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="setPlayerRace();setPlayerClass();resetSkills(); applyRaceSkills(); applyClassSkills();">Refresh</button>
             <div class="row">
                 <div class="col">
                     <p>Available proficiencies:</p>
