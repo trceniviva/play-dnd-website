@@ -27,7 +27,7 @@ let allLanguages = ['Abyssal', 'Celestial', 'Common', 'Daelkyr', 'DeepSpeech', '
 
 var playerRace;
 var playerSubrace;
-var playerClass;
+var playerClass = {class: "",armor: [],weapons: [],tools: [],countToolsAdd: -1,toolOptions: [],skills: [],countSkillsAdd: -1,skillsOptions:[] };
 
 let raceData = [
     {
@@ -122,18 +122,18 @@ let raceData = [
         wis: 0,
         cha: 2,
         countAbilityAdd: 1,
-        abilityAddAllowed: ["str","dex","con","int","wis","cha"],
+        abilityAddAllowed: ["str", "dex", "con", "int", "wis", "cha"],
         abilityAddRule: "",
         speed: 30,
         darkvision: false,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ["Deception","Insight","Intimidation","Persuasion"]
+        skillsOptions: ["Deception", "Insight", "Intimidation", "Persuasion"]
     },
     {
         race: "Gnome",
-        subraces: ["Forest","Rock"],
-        languages: ["Common","Gnomish"],
+        subraces: ["Forest", "Rock"],
+        languages: ["Common", "Gnomish"],
         countLangAdd: 0,
         str: 0,
         dex: 0,
@@ -153,7 +153,7 @@ let raceData = [
     {
         race: "Goliath",
         subraces: [],
-        languages: ["Common","Giant"],
+        languages: ["Common", "Giant"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -173,7 +173,7 @@ let raceData = [
     {
         race: "Half-elf",
         subraces: [],
-        languages: ["Common","Elvish"],
+        languages: ["Common", "Elvish"],
         countLangAdd: 1,
         str: 0,
         dex: 0,
@@ -182,21 +182,21 @@ let raceData = [
         wis: 0,
         cha: 2,
         countAbilityAdd: 2,
-        abilityAddAllowed: ["str","dex","con","int","wis"],
+        abilityAddAllowed: ["str", "dex", "con", "int", "wis"],
         abilityAddRule: "oneEach",
         speed: 30,
         darkvision: true,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ['Acrobatics','AnimalHandling','Arcana','Athletics',
-        'Deception','History','Insight','Intimidation','Investigation',
-        'Medicine','Nature','Perception','Performance','Persuasion',
-        'Religion','SleightofHand','Stealth','Survival']
+        skillsOptions: ['Acrobatics', 'AnimalHandling', 'Arcana', 'Athletics',
+            'Deception', 'History', 'Insight', 'Intimidation', 'Investigation',
+            'Medicine', 'Nature', 'Perception', 'Performance', 'Persuasion',
+            'Religion', 'SleightofHand', 'Stealth', 'Survival']
     },
     {
         race: "Half-orc",
         subraces: [],
-        languages: ["Common","Orc"],
+        languages: ["Common", "Orc"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -215,8 +215,8 @@ let raceData = [
     },
     {
         race: "Halfling",
-        subraces: ["Lightfoot","Stout"],
-        languages: ["Common","Halfling"],
+        subraces: ["Lightfoot", "Stout"],
+        languages: ["Common", "Halfling"],
         countLangAdd: 0,
         str: 0,
         dex: 2,
@@ -271,7 +271,7 @@ let raceData = [
         darkvision: false,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ["Acrobatics","Deception","Stealth","SleightofHand"]
+        skillsOptions: ["Acrobatics", "Deception", "Stealth", "SleightofHand"]
     },
     {
         race: "Tabaxi",
@@ -289,14 +289,14 @@ let raceData = [
         abilityAddRule: "",
         speed: 30,
         darkvision: true,
-        skills: ["Perception","Stealth"],
+        skills: ["Perception", "Stealth"],
         countSkillsAdd: 0,
         skillsOptions: []
     },
     {
         race: "Tiefling",
         subraces: [],
-        languages: ["Common","Infernal"],
+        languages: ["Common", "Infernal"],
         countLangAdd: 1,
         str: 0,
         dex: 0,
@@ -316,7 +316,7 @@ let raceData = [
     {
         race: "Tortle",
         subraces: [],
-        languages: ["Common","Aquan"],
+        languages: ["Common", "Aquan"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -336,7 +336,7 @@ let raceData = [
     {
         race: "Warforged",
         subraces: [],
-        languages: ["Common","Aquan"],
+        languages: ["Common", "Aquan"],
         countLangAdd: 0,
         str: 0,
         dex: 0,
@@ -345,16 +345,16 @@ let raceData = [
         wis: 0,
         cha: 0,
         countAbilityAdd: 1,
-        abilityAddAllowed: ["str","dex","int","wis","cha"],
+        abilityAddAllowed: ["str", "dex", "int", "wis", "cha"],
         abilityAddRule: "",
         speed: 30,
         darkvision: false,
         skills: [],
         countSkillsAdd: 1,
-        skillsOptions: ['Acrobatics','AnimalHandling','Arcana','Athletics',
-        'Deception','History','Insight','Intimidation','Investigation',
-        'Medicine','Nature','Perception','Performance','Persuasion',
-        'Religion','SleightofHand','Stealth','Survival']
+        skillsOptions: ['Acrobatics', 'AnimalHandling', 'Arcana', 'Athletics',
+            'Deception', 'History', 'Insight', 'Intimidation', 'Investigation',
+            'Medicine', 'Nature', 'Perception', 'Performance', 'Persuasion',
+            'Religion', 'SleightofHand', 'Stealth', 'Survival']
     }
 ]
 
@@ -437,7 +437,7 @@ let subraceData = [
         cha: 0,
         speed: 0,
     },
-        
+
     {
         subrace: "Air",
         parentRace: "Genasi",
@@ -545,26 +545,54 @@ let subraceData = [
 ]
 
 let classData = [
-    {class: "Artificer",
-    armor: ["Light Armor", "Medium Armor", "Shields"],
-    weapons: ["Simple Weapons"],
-    tools: ["Theives' Tools", "Tinker's Tools"],
-    countToolsAdd: 1,
-    toolOptions: [],
-    skills: [],
-    countSkillsAdd: 2,
-    skillsOptions: ["Arcana", "History", "Investigation", "Medicine", "Nature", "Perception", "SleightofHand"] 
-}
+    {
+        class: "Artificer",
+        armor: ["Light Armor", "Medium Armor", "Shields"],
+        weapons: ["Simple Weapons"],
+        tools: ["Theives' Tools", "Tinker's Tools"],
+        countToolsAdd: 1,
+        toolOptions: [],
+        skills: [],
+        countSkillsAdd: 2,
+        skillsOptions: ["Arcana", "History", "Investigation", "Medicine", "Nature", "Perception", "SleightofHand"],
+    },
+    {
+        class: "Barbarian",
+        armor: ["Light Armor","Medium Armor","Shields"],
+        weapons: ["Simple Weapons","Martial Weapons"],
+        tools: [],
+        countToolsAdd: 0,
+        toolOptions: [],
+        skills: [],
+        countSkillsAdd: 2,
+        skillsOptions: ["AnimalHandling", "Athletics","Intimidation","Nature","Perception","Survival"],
+    },
+    {
+        class: "Bard",
+        armor: ["Light Armor"],
+        weapons: ["Simple Weapons","Hand Crossbows","Longswords","Rapiers","Shortswords"],
+        tools: [],
+        countToolsAdd: 3,
+        toolOptions: ["Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol"],
+        skills: [],
+        countSkillsAdd: 3,
+        skillsOptions: ["Acrobatics","AnimalHandling","Arcana","Athletics","Deception",
+        "History","Insight","Intimidation","Investigation","Medicine",
+        "Nature","Perception","Performance","Persuasion","Religion",
+        "SleightofHand","Stealth","Survival"],
+    }
 ]
 
 function setPlayerClass() {
-    for (i = 0; i < classData.length; i++){
+    for (var i = 0; i < classData.length; i++) {
         if (classData[i].class === selectClass.value) {
-            playerClass = classData[i];} else playerClass = []}
-        }
+            playerClass = classData[i];
+        } 
+    }
+}
 
 function setPlayerRace() {
-    for (i = 0; i < raceData.length; i++) {
+    for (var i = 0; i < raceData.length; i++) {
         if (raceData[i].race === selectedRace.value) {
             playerRace = raceData[i];
         }
@@ -584,7 +612,7 @@ function showSubraceOptions() {
 }
 
 function setPlayerSubrace() {
-    for (i=0; i<subraceData.length;i++) {
+    for (var i = 0; i < subraceData.length; i++) {
         if (subraceData[i].subrace === selectSubrace.value) {
             playerSubrace = subraceData[i];
         }
@@ -592,20 +620,20 @@ function setPlayerSubrace() {
 }
 
 function resetSkills() {
-    autoProfList.innerHTML = "";
+    // autoProfList.innerHTML = "";
     var skillChecks = document.querySelectorAll(".skill-box");
-    for (i=0; i<skillChecks.length; i++) {skillChecks[i].checked=false; skillChecks[i].disabled=true};
+    for (var i = 0; i < skillChecks.length; i++) { skillChecks[i].checked = false; skillChecks[i].disabled = true };
 }
 
 function applyRaceSkills() {
     if (playerRace.skillsOptions.length > 0) {
-        for (i=0; i<playerRace.skillsOptions.length; i++) {
+        for (var i = 0; i < playerRace.skillsOptions.length; i++) {
             var skillBox = document.getElementById(playerRace.skillsOptions[i].toLowerCase());
             skillBox.disabled = false;
         }
     }
     if (playerRace.skills.length > 0) {
-        for (i=0; i<playerRace.skills.length; i++) {
+        for (var i = 0; i < playerRace.skills.length; i++) {
             var skillBox = document.getElementById(playerRace.skills[i].toLowerCase());
             skillBox.checked = true;
         }
@@ -614,7 +642,7 @@ function applyRaceSkills() {
 
 function applyClassSkills() {
     if (playerClass.skillsOptions.length > 0) {
-        for (i=0; i<playerClass.skillsOptions.length; i++) {
+        for (var i = 0; i < playerClass.skillsOptions.length; i++) {
             var skillBox = document.getElementById(playerClass.skillsOptions[i].toLowerCase());
             skillBox.disabled = false;
         }

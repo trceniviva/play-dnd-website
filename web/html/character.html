@@ -18,9 +18,9 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="race-dropdown">Select race</label>
+                        <label for="race-dropdown">Select Race</label>
                         <select class="form-control" id="race-dropdown"
-                            onchange="setPlayerRace(); showSubraceOptions(); applyRaceSkills();">
+                            onchange="setPlayerRace(); showSubraceOptions();">
                             <option>Changeling</option>
                             <option>Dragonborn</option>
                             <option>Dwarf</option>
@@ -43,7 +43,7 @@
                 <div class="col hide-element" id="subrace-container">
                     <div class="form-group">
                         <label for="subrace-dropdown">Subrace</label>
-                        <select class="form-control" id="subrace-dropdown" onchange="setPlayerSubrace();applySkills();">
+                        <select class="form-control" id="subrace-dropdown" onchange="setPlayerSubrace();">
 
                         </select>
                     </div>
@@ -53,7 +53,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="first-class-dropdown">Select Class</label>
-                        <select class="form-control" id="first-class-dropdown" onchange="setPlayerClass();applyClassSkills();">
+                        <select class="form-control" id="first-class-dropdown" onchange="setPlayerClass();">
                             <option>Artificer</option>
                             <option>Barbarian</option>
                             <option>Bard</option>
@@ -98,6 +98,105 @@
                     </div>
                 </div>
             </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="base-str-dropdown">Strength</label>
+                    <select class="form-control" id="base-str-dropdown">
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="base-str-dropdown">Dexterity</label>
+                    <select class="form-control" id="base-str-dropdown">
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="base-str-dropdown">Constitution</label>
+                    <select class="form-control" id="base-str-dropdown">
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="base-str-dropdown">Intelligence</label>
+                    <select class="form-control" id="base-str-dropdown">
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="base-str-dropdown">Wisdom</label>
+                    <select class="form-control" id="base-str-dropdown">
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="base-str-dropdown">Charisma</label>
+                    <select class="form-control" id="base-str-dropdown">
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    </select>
+                </div>
+            </div>
+            <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="resetSkills(); applyRaceSkills(); applyClassSkills();">Refresh</button>
             <div class="row">
                 <div class="col">
                     <p>Available proficiencies:</p>

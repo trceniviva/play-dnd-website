@@ -29,7 +29,10 @@ races = ['Changeling','Dragonborn','Dwarf','Elf','Genasi','Gnome','Goliath',
          'Tortle','Warforged']
 
 for x in races:
-    print("<option>'"+x+"'</option>")
+    print("<option>"+x+"</option>")
+    
+for x in list(range(0, 21)):
+    print("<option>"+str(x)+"</option>")
 
 for x in races:
     print ('''else if (player.race === "'''+x+'''") {}''')
@@ -73,6 +76,14 @@ skills = ['acrobatics','animalHandling','arcana','athletics',
           'deception','history','insight','intimidation','investigation',
           'medicine','nature','perception','performance','persuasion',
           'religion','sleightOfHand','stealth','survival']
+
+for x in skills:
+    small = x.lower().replace(" ","-")
+    big = x
+    print('''<div class="form-check">
+          <input class="form-check-input" type = "checkbox" value="" id="{}" disabled>
+          <label class="form-check-label" for="defaultCheck1">{}</label>
+          </div>'''.format(small, big))
 
 for x in skills:
     print('''var '''+x+''' = document.getElementById("'''+x+'''");''')
