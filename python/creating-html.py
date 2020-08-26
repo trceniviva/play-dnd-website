@@ -77,8 +77,8 @@ skills = ['acrobatics','animalHandling','arcana','athletics',
           'medicine','nature','perception','performance','persuasion',
           'religion','sleightOfHand','stealth','survival']
 
-for x in skills:
-    small = x.lower().replace(" ","-")
+for x in languages:
+    small = x.lower().replace("'","".replace(" ","-")
     big = x
     print('''<div class="form-check">
           <input class="form-check-input" type = "checkbox" value="" id="{}" disabled>
@@ -109,3 +109,21 @@ import pyperclip as clip
 clip.copy(langOptionsInBackgroundOne)
 
 str(languages).replace("'","")
+
+artisans = ["Alchemist's Supplies",
+    "Brewer's Supplies",
+    "Calligrapher's Supplies",
+    "Carpenter's Tools",
+    "Cartographer's Tools",
+    "Cobbler's Tools",
+    "Cook's Utensils",
+    "Glassblower's Tools",
+    "Jeweler's Tools",
+    "Leatherworker's Tools",
+    "Mason's Tools",
+    "Painter's Supplies",
+    "Potter's Tools",
+    "Smith's Tools",
+    "Tinker's Tools",
+    "Weaver's Tools",
+    "Woodcarver's Tools"]

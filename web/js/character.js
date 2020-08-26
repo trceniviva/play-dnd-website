@@ -26,7 +26,7 @@ let countLanguagesAvailable = 0;
 let languagesAvailable = [];
 let allLanguages = ['Abyssal', 'Celestial', 'Common', 'Daelkyr', 'DeepSpeech', 'Draconic', 'Dwarvish', 'Elvish', 'Giant', 'Gith', 'Gnomish', 'Goblin', 'Halfling', 'Infernal', 'Kraul', 'Leonin', 'Loxodon', 'Marquesian', 'Minotaur', 'Naush', 'Orc', 'Primordial', 'Quori', 'Riedran', 'Sylvan', 'Undercommon', 'Vedalken', 'Zemnian']
 
-var playerRace;
+var playerRace = {race: "",subraces: [],languages: [],countLangAdd: 0,str: 0,dex: 0,con: 0,int: 0,wis: 0,cha: 0,countAbilityAdd: 0,abilityAddAllowed: [],abilityAddRule: "",speed: 0,darkvision: false,skills: [],countSkillsAdd: 0,skillsOptions: []}
 var playerSubrace;
 var playerClass = { class: "", armor: [], weapons: [], tools: [], countToolsAdd: -1, toolOptions: [], skills: [], countSkillsAdd: -1, skillsOptions: [] };
 var playerBackground = { background: "", skills: [], countSkillsAdd: 0, skillsOptions: [], languages: [], countLangAdd: 0, tools: [], countToolsAdd: 0, toolOptions: []}
@@ -1060,7 +1060,8 @@ function applyClassSkills() {
     }
 }
 
-const langItems = document.querySelectorAll(".language-box")
+const langItems = document.querySelectorAll(".language-box");
+var langCap = playerRace.countLangAdd + playerBackground.countLangAdd;
 
 function resetLanguages() {
     for (var i = 0; i < langItems.length; i++) {
@@ -1069,12 +1070,16 @@ function resetLanguages() {
 }
 
 function checkLanguageCap() {
-    var langCap = 3;
-    var langChecked = 0;
+    langCap = playerRace.countLangAdd + playerBackground.countLangAdd;
+    let langChecked = 0;
     for (var i = 0; i < langItems.length; i++) {
         if (langItems[i].checked === true)
         langChecked = langChecked + 1;}
     if (langChecked === langCap) {
         for (var i = 0; i < langItems.length; i++) {
+            if (langItems[i].checked === false) {
             langItems[i].disabled = true}}
-}
+} else if (langChecked < langCap) {
+    for (var i = 0; i < langItems.length; i++) {
+        langItems[i].disabled = false}
+}}

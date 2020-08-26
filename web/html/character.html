@@ -256,9 +256,12 @@
                     </select>
                 </div>
             </div>
+            <!-- Refresh button -->
             <button type="button" class="btn btn-outline-success mb-5 mt-5"
                 onclick="setPlayerRace();setPlayerClass();resetSkills(); applyRaceSkills(); applyClassSkills();">Refresh</button>
-            <div class="row">
+            <!-- Form row for proficiencies and languages-->
+            <div class="form-row">
+                <!-- form column for skill proficiencies-->
                 <div class="col">
                     <p>Skill Proficiencies:</p>
                     <div class="form-check">
@@ -335,121 +338,223 @@
                     </div>
 
                 </div>
-                <div class="col" id="language-checkboxes" onchange="checkLanguageCap();">
+                <!-- Form Column for Various Tools-->
+                <div class="col" id="language-checkboxes">
+                    <p>Artisans Tools:</p>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="alchemists-supplies" disabled>
+                        <label class="form-check-label" for="alchemists-supplies">Alchemist's Supplies</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="brewers-supplies" disabled>
+                        <label class="form-check-label" for="brewers-supplies">Brewer's Supplies</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="calligraphers-supplies" disabled>
+                        <label class="form-check-label" for="calligraphers-supplies">Calligrapher's Supplies</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="carpenters-tools" disabled>
+                        <label class="form-check-label" for="carpenters-tools">Carpenter's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="cartographers-tools" disabled>
+                        <label class="form-check-label" for="cartographers-tools">Cartographer's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="cobblers-tools" disabled>
+                        <label class="form-check-label" for="cobblers-tools">Cobbler's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="cooks-utensils" disabled>
+                        <label class="form-check-label" for="cooks-utensils">Cook's Utensils</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="glassblowers-tools" disabled>
+                        <label class="form-check-label" for="glassblowers-tools">Glassblower's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="jewelers-tools" disabled>
+                        <label class="form-check-label" for="jewelers-tools">Jeweler's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="leatherworkers-tools" disabled>
+                        <label class="form-check-label" for="leatherworkers-tools">Leatherworker's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="masons-tools" disabled>
+                        <label class="form-check-label" for="masons-tools">Mason's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="painters-supplies" disabled>
+                        <label class="form-check-label" for="painters-supplies">Painter's Supplies</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="potters-tools" disabled>
+                        <label class="form-check-label" for="potters-tools">Potter's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="smiths-tools" disabled>
+                        <label class="form-check-label" for="smiths-tools">Smith's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="tinkers-tools" disabled>
+                        <label class="form-check-label" for="tinkers-tools">Tinker's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="weavers-tools" disabled>
+                        <label class="form-check-label" for="weavers-tools">Weaver's Tools</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input artisans-toolbox" type="checkbox" value="" id="woodcarvers-tools" disabled>
+                        <label class="form-check-label" for="woodcarvers-tools">Woodcarver's Tools</label>
+                    </div>
+                </div>
+                <!-- Form column for languages-->
+                <div class="col" id="language-checkboxes">
                     <p>Languages:</p>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="abyssal">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="abyssal">
                         <label class="form-check-label" for="abyssal">Abyssal</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="celestial">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="celestial">
                         <label class="form-check-label" for="celestial">Celestial</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="common">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="common">
                         <label class="form-check-label" for="common">Common</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="daelkyr">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="daelkyr">
                         <label class="form-check-label" for="daelkyr">Daelkyr</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="deepspeech">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="deepspeech">
                         <label class="form-check-label" for="deepspeech">DeepSpeech</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="draconic">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="draconic">
                         <label class="form-check-label" for="draconic">Draconic</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="dwarvish">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="dwarvish">
                         <label class="form-check-label" for="dwarvish">Dwarvish</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="elvish">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="elvish">
                         <label class="form-check-label" for="elvish">Elvish</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="giant">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="giant">
                         <label class="form-check-label" for="giant">Giant</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="gith">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="gith">
                         <label class="form-check-label" for="gith">Gith</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="gnomish">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="gnomish">
                         <label class="form-check-label" for="gnomish">Gnomish</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="goblin">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="goblin">
                         <label class="form-check-label" for="goblin">Goblin</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="halfling">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="halfling">
                         <label class="form-check-label" for="halfling">Halfling</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="infernal">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="infernal">
                         <label class="form-check-label" for="infernal">Infernal</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="kraul">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="kraul">
                         <label class="form-check-label" for="kraul">Kraul</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="leonin">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="leonin">
                         <label class="form-check-label" for="leonin">Leonin</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="loxodon">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="loxodon">
                         <label class="form-check-label" for="loxodon">Loxodon</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="marquesian">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="marquesian">
                         <label class="form-check-label" for="marquesian">Marquesian</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="minotaur">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="minotaur">
                         <label class="form-check-label" for="minotaur">Minotaur</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="naush">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="naush">
                         <label class="form-check-label" for="naush">Naush</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="orc">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="orc">
                         <label class="form-check-label" for="orc">Orc</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="primordial">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="primordial">
                         <label class="form-check-label" for="primordial">Primordial</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="quori">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="quori">
                         <label class="form-check-label" for="quori">Quori</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="riedran">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="riedran">
                         <label class="form-check-label" for="riedran">Riedran</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="sylvan">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="sylvan">
                         <label class="form-check-label" for="sylvan">Sylvan</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="undercommon">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="undercommon">
                         <label class="form-check-label" for="undercommon">Undercommon</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="vedalken">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="vedalken">
                         <label class="form-check-label" for="vedalken">Vedalken</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input language-box" type="checkbox" value="" id="zemnian">
+                        <input class="form-check-input language-box" onchange="checkLanguageCap();" type="checkbox"
+                            value="" id="zemnian">
                         <label class="form-check-label" for="zemnian">Zemnian</label>
                     </div>
-                    <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="resetLanguages();">Reset Languages</button>
+                    <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="resetLanguages();">Reset
+                        Languages</button>
                 </div>
         </form>
     </div>
