@@ -77,13 +77,13 @@ skills = ['acrobatics','animalHandling','arcana','athletics',
           'medicine','nature','perception','performance','persuasion',
           'religion','sleightOfHand','stealth','survival']
 
-for x in languages:
-    small = x.lower().replace("'","".replace(" ","-")
+for x in artisans:
+    small = x.lower().replace("'","").replace(" ","-")
     big = x
     print('''<div class="form-check">
-          <input class="form-check-input" type = "checkbox" value="" id="{}" disabled>
-          <label class="form-check-label" for="defaultCheck1">{}</label>
-          </div>'''.format(small, big))
+          <input class="form-check-input artisans-toolbox" type = "checkbox" value="" id="{}" disabled>
+          <label class="form-check-label" for="{}">{}</label>
+          </div>'''.format(small, small, big))
 
 for x in skills:
     print('''var '''+x+''' = document.getElementById("'''+x+'''");''')

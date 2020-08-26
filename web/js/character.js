@@ -35,7 +35,7 @@ let raceData = [
     {
         race: "Elf",
         subraces: ["Dark", "Eladrin", "High", "Wood"],
-        languages: ["Common", "Elvish"],
+        languages: ["common", "elvish"],
         countLangAdd: 1,
         str: 0,
         dex: 2,
@@ -55,7 +55,7 @@ let raceData = [
     {
         race: "Dwarf",
         subraces: ["Hill", "Mountain"],
-        languages: ["Common", "Dwarvish"],
+        languages: ["common", "dwarvish"],
         countLangAdd: 0,
         str: 0,
         dex: 0,
@@ -75,7 +75,7 @@ let raceData = [
     {
         race: "Genasi",
         subraces: ["Air", "Earth", "Fire", "Water"],
-        languages: ["Common", "Primordial"],
+        languages: ["common", "primordial"],
         countLangAdd: 0,
         str: 0,
         dex: 0,
@@ -95,7 +95,7 @@ let raceData = [
     {
         race: "Dragonborn",
         subraces: [],
-        languages: ["Common", "Draconic"],
+        languages: ["common", "draconic"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -115,7 +115,7 @@ let raceData = [
     {
         race: "Changeling",
         subraces: [],
-        languages: ["Common"],
+        languages: ["common"],
         countLangAdd: 2,
         str: 0,
         dex: 0,
@@ -130,12 +130,12 @@ let raceData = [
         darkvision: false,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ["Deception", "Insight", "Intimidation", "Persuasion"]
+        skillsOptions: ["deception", "insight", "intimidation", "persuasion"]
     },
     {
         race: "Gnome",
         subraces: ["Forest", "Rock"],
-        languages: ["Common", "Gnomish"],
+        languages: ["common", "gnomish"],
         countLangAdd: 0,
         str: 0,
         dex: 0,
@@ -155,7 +155,7 @@ let raceData = [
     {
         race: "Goliath",
         subraces: [],
-        languages: ["Common", "Giant"],
+        languages: ["common", "giant"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -175,7 +175,7 @@ let raceData = [
     {
         race: "Half-elf",
         subraces: [],
-        languages: ["Common", "Elvish"],
+        languages: ["common", "elvish"],
         countLangAdd: 1,
         str: 0,
         dex: 0,
@@ -198,7 +198,7 @@ let raceData = [
     {
         race: "Half-orc",
         subraces: [],
-        languages: ["Common", "Orc"],
+        languages: ["common", "orc"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -218,7 +218,7 @@ let raceData = [
     {
         race: "Halfling",
         subraces: ["Lightfoot", "Stout"],
-        languages: ["Common", "Halfling"],
+        languages: ["common", "halfling"],
         countLangAdd: 0,
         str: 0,
         dex: 2,
@@ -238,7 +238,7 @@ let raceData = [
     {
         race: "Human",
         subraces: [],
-        languages: ["Common"],
+        languages: ["common"],
         countLangAdd: 1,
         str: 1,
         dex: 1,
@@ -259,7 +259,7 @@ let raceData = [
         race: "Kenku",
         subraces: [],
         languages: [],
-        countLangAdd: 0,
+        countLangAdd: -99,
         str: 0,
         dex: 2,
         con: 0,
@@ -273,12 +273,12 @@ let raceData = [
         darkvision: false,
         skills: [],
         countSkillsAdd: 2,
-        skillsOptions: ["Acrobatics", "Deception", "Stealth", "SleightofHand"]
+        skillsOptions: ["acrobatics", "deception", "stealth", "sleightofhand"]
     },
     {
         race: "Tabaxi",
         subraces: [],
-        languages: ["Common"],
+        languages: ["common"],
         countLangAdd: 1,
         str: 0,
         dex: 2,
@@ -291,14 +291,14 @@ let raceData = [
         abilityAddRule: "",
         speed: 30,
         darkvision: true,
-        skills: ["Perception", "Stealth"],
+        skills: ["perception", "stealth"],
         countSkillsAdd: 0,
         skillsOptions: []
     },
     {
         race: "Tiefling",
         subraces: [],
-        languages: ["Common", "Infernal"],
+        languages: ["common", "infernal"],
         countLangAdd: 1,
         str: 0,
         dex: 0,
@@ -318,7 +318,7 @@ let raceData = [
     {
         race: "Tortle",
         subraces: [],
-        languages: ["Common", "Aquan"],
+        languages: ["common", "aquan"],
         countLangAdd: 0,
         str: 2,
         dex: 0,
@@ -338,7 +338,7 @@ let raceData = [
     {
         race: "Warforged",
         subraces: [],
-        languages: ["Common", "Aquan"],
+        languages: ["common"],
         countLangAdd: 0,
         str: 0,
         dex: 0,
@@ -1060,17 +1060,26 @@ function applyClassSkills() {
     }
 }
 
+function applyRaceLanguages() {
+    if (playerRace.languages.length > 0) {
+        for (var i = 0; i < playerRace.languages.length; i++) {
+            document.getElementById(playerRace.languages[i].toLowerCase()).checked = true;
+            document.getElementById(playerRace.languages[i].toLowerCase()).disabled = true;
+        }
+    }
+}
+
 const langItems = document.querySelectorAll(".language-box");
-var langCap = playerRace.countLangAdd + playerBackground.countLangAdd;
+var langCap = playerRace.countLangAdd + playerBackground.countLangAdd +playerRace.languages.length;
 
 function resetLanguages() {
     for (var i = 0; i < langItems.length; i++) {
         langItems[i].checked = false;
         langItems[i].disabled = false;}
-}
+        }
 
 function checkLanguageCap() {
-    langCap = playerRace.countLangAdd + playerBackground.countLangAdd;
+    langCap = playerRace.languages.length + playerRace.countLangAdd + playerBackground.countLangAdd;
     let langChecked = 0;
     for (var i = 0; i < langItems.length; i++) {
         if (langItems[i].checked === true)
@@ -1081,5 +1090,12 @@ function checkLanguageCap() {
             langItems[i].disabled = true}}
 } else if (langChecked < langCap) {
     for (var i = 0; i < langItems.length; i++) {
+        if (langItems[i].checked === false) {
         langItems[i].disabled = false}
-}}
+    }} else if (langChecked > langCap) {
+        for (var i = 0; i < langItems.length; i++) {
+            if (langItems[i].checked === false) {
+            langItems[i].disabled = true}
+    }
+
+} }
