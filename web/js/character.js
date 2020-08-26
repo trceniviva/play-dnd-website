@@ -16,6 +16,7 @@ let player = {
 }
 
 const selectedRace = document.getElementById("race-dropdown");
+const selectedBackground = document.getElementById("background-dropdown");
 const selectSubrace = document.getElementById("subrace-dropdown");
 const selectClass = document.getElementById("first-class-dropdown");
 
@@ -28,6 +29,7 @@ let allLanguages = ['Abyssal', 'Celestial', 'Common', 'Daelkyr', 'DeepSpeech', '
 var playerRace;
 var playerSubrace;
 var playerClass = { class: "", armor: [], weapons: [], tools: [], countToolsAdd: -1, toolOptions: [], skills: [], countSkillsAdd: -1, skillsOptions: [] };
+var playerBackground = { background: "", skills: [], countSkillsAdd: 0, skillsOptions: [], languages: [], countLangAdd: 0, tools: [], countToolsAdd: 0, toolOptions: []}
 
 let raceData = [
     {
@@ -989,6 +991,14 @@ function setPlayerClass() {
     }
 }
 
+function setPlayerBackground() {
+    for (var i = 0; i < backgroundData.length; i++) {
+        if (backgroundData[i].background === selectedBackground.value) {
+            playerBackground = backgroundData[i];
+        }
+    }
+}
+
 function setPlayerRace() {
     for (var i = 0; i < raceData.length; i++) {
         if (raceData[i].race === selectedRace.value) {
@@ -1048,4 +1058,23 @@ function applyClassSkills() {
             }
         }
     }
+}
+
+const langItems = document.querySelectorAll(".language-box")
+
+function resetLanguages() {
+    for (var i = 0; i < langItems.length; i++) {
+        langItems[i].checked = false;
+        langItems[i].disabled = false;}
+}
+
+function checkLanguageCap() {
+    var langCap = 3;
+    var langChecked = 0;
+    for (var i = 0; i < langItems.length; i++) {
+        if (langItems[i].checked === true)
+        langChecked = langChecked + 1;}
+    if (langChecked === langCap) {
+        for (var i = 0; i < langItems.length; i++) {
+            langItems[i].disabled = true}}
 }

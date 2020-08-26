@@ -19,8 +19,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="race-dropdown">Select Race</label>
-                        <select class="form-control" id="race-dropdown"
-                        onload="setPlayerRace();"
+                        <select class="form-control" id="race-dropdown" onload="setPlayerRace();"
                             onchange="setPlayerRace(); showSubraceOptions();">
                             <option>Changeling</option>
                             <option>Dragonborn</option>
@@ -49,10 +48,14 @@
                         </select>
                     </div>
                 </div>
+            </div>
+            <div class="form-row">
+                <!-- Pick your background -->
                 <div class="col">
                     <div class="form-group">
                         <label for="background-dropdown">Background</label>
-                        <select class="form-control" id="background-dropdown">
+                        <select class="form-control" id="background-dropdown" onload="setPlayerBackground();"
+                            onchange="setPlayerBackground();">
                             <div class="dropdown-menu" aria-labelledby="background-dropdown">
                                 <option>Acolyte</option>
                                 <option>Anthropologist</option>
@@ -91,13 +94,25 @@
                         </select>
                     </div>
                 </div>
+                <!-- Background language options -->
+                <div class="col hide-element">
+
+                </div>
+                <!-- Background language options -->
+                <div class="col hide-element">
+
+                </div>
+                <!-- Background language options -->
+                <div class="col hide-element">
+
+                </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <div class="form-group">
                         <label for="first-class-dropdown">Select Class</label>
                         <select class="form-control" id="first-class-dropdown" onload="setPlayerClass();"
-                        onchange="setPlayerClass()">
+                            onchange="setPlayerClass();">
                             <option>Artificer</option>
                             <option>Barbarian</option>
                             <option>Bard</option>
@@ -147,179 +162,295 @@
                 <div class="col">
                     <label for="base-str-dropdown">Strength</label>
                     <select class="form-control" id="base-str-dropdown">
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="base-str-dropdown">Dexterity</label>
                     <select class="form-control" id="base-str-dropdown">
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="base-str-dropdown">Constitution</label>
                     <select class="form-control" id="base-str-dropdown">
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="base-str-dropdown">Intelligence</label>
                     <select class="form-control" id="base-str-dropdown">
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="base-str-dropdown">Wisdom</label>
                     <select class="form-control" id="base-str-dropdown">
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="base-str-dropdown">Charisma</label>
                     <select class="form-control" id="base-str-dropdown">
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                    <option>11</option>
-                    <option>12</option>
-                    <option>13</option>
-                    <option>14</option>
-                    <option>15</option>
-                    <option>16</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
                     </select>
                 </div>
             </div>
-            <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="setPlayerRace();setPlayerClass();resetSkills(); applyRaceSkills(); applyClassSkills();">Refresh</button>
+            <button type="button" class="btn btn-outline-success mb-5 mt-5"
+                onclick="setPlayerRace();setPlayerClass();resetSkills(); applyRaceSkills(); applyClassSkills();">Refresh</button>
             <div class="row">
                 <div class="col">
-                    <p>Available proficiencies:</p>
+                    <p>Skill Proficiencies:</p>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="acrobatics" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Acrobatics</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="acrobatics" disabled>
+                        <label class="form-check-label" for="acrobatics">Acrobatics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="animalhandling" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Animal Handling</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="animalhandling" disabled>
+                        <label class="form-check-label" for="animalhandling">Animal Handling</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="arcana" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Arcana</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="arcana" disabled>
+                        <label class="form-check-label" for="arcana">Arcana</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="athletics" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Athletics</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="athletics" disabled>
+                        <label class="form-check-label" for="athletics">Athletics</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="deception" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Deception</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="deception" disabled>
+                        <label class="form-check-label" for="deception">Deception</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="history" disabled>
-                        <label class="form-check-label" for="defaultCheck1">History</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="history" disabled>
+                        <label class="form-check-label" for="history">History</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="insight" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Insight</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="insight" disabled>
+                        <label class="form-check-label" for="insight">Insight</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="intimidation" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Intimidation</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="intimidation" disabled>
+                        <label class="form-check-label" for="intimidation">Intimidation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="investigation" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Investigation</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="investigation" disabled>
+                        <label class="form-check-label" for="investigation">Investigation</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="medicine" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Medicine</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="medicine" disabled>
+                        <label class="form-check-label" for="medicine">Medicine</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="nature" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Nature</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="nature" disabled>
+                        <label class="form-check-label" for="nature">Nature</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="perception" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Perception</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="perception" disabled>
+                        <label class="form-check-label" for="perception">Perception</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="performance" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Performance</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="performance" disabled>
+                        <label class="form-check-label" for="performance">Performance</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="persuasion" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Persuasion</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="persuasion" disabled>
+                        <label class="form-check-label" for="persuasion">Persuasion</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="religion" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Religion</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="religion" disabled>
+                        <label class="form-check-label" for="religion">Religion</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="sleightofhand" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Sleight of Hand</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="sleightofhand" disabled>
+                        <label class="form-check-label" for="sleightofhand">Sleight of Hand</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="stealth" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Stealth</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="stealth" disabled>
+                        <label class="form-check-label" for="stealth">Stealth</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input skill-box" type="checkbox" value="" id="survival" disabled>
-                        <label class="form-check-label" for="defaultCheck1">Survival</label>
+                        <input class="form-check-input skill-box" type="checkbox" id="survival" disabled>
+                        <label class="form-check-label" for="survival">Survival</label>
                     </div>
 
                 </div>
-            </div>
+                <div class="col" id="language-checkboxes" onchange="checkLanguageCap();">
+                    <p>Languages:</p>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="abyssal">
+                        <label class="form-check-label" for="abyssal">Abyssal</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="celestial">
+                        <label class="form-check-label" for="celestial">Celestial</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="common">
+                        <label class="form-check-label" for="common">Common</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="daelkyr">
+                        <label class="form-check-label" for="daelkyr">Daelkyr</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="deepspeech">
+                        <label class="form-check-label" for="deepspeech">DeepSpeech</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="draconic">
+                        <label class="form-check-label" for="draconic">Draconic</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="dwarvish">
+                        <label class="form-check-label" for="dwarvish">Dwarvish</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="elvish">
+                        <label class="form-check-label" for="elvish">Elvish</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="giant">
+                        <label class="form-check-label" for="giant">Giant</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="gith">
+                        <label class="form-check-label" for="gith">Gith</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="gnomish">
+                        <label class="form-check-label" for="gnomish">Gnomish</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="goblin">
+                        <label class="form-check-label" for="goblin">Goblin</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="halfling">
+                        <label class="form-check-label" for="halfling">Halfling</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="infernal">
+                        <label class="form-check-label" for="infernal">Infernal</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="kraul">
+                        <label class="form-check-label" for="kraul">Kraul</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="leonin">
+                        <label class="form-check-label" for="leonin">Leonin</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="loxodon">
+                        <label class="form-check-label" for="loxodon">Loxodon</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="marquesian">
+                        <label class="form-check-label" for="marquesian">Marquesian</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="minotaur">
+                        <label class="form-check-label" for="minotaur">Minotaur</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="naush">
+                        <label class="form-check-label" for="naush">Naush</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="orc">
+                        <label class="form-check-label" for="orc">Orc</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="primordial">
+                        <label class="form-check-label" for="primordial">Primordial</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="quori">
+                        <label class="form-check-label" for="quori">Quori</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="riedran">
+                        <label class="form-check-label" for="riedran">Riedran</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="sylvan">
+                        <label class="form-check-label" for="sylvan">Sylvan</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="undercommon">
+                        <label class="form-check-label" for="undercommon">Undercommon</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="vedalken">
+                        <label class="form-check-label" for="vedalken">Vedalken</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input language-box" type="checkbox" value="" id="zemnian">
+                        <label class="form-check-label" for="zemnian">Zemnian</label>
+                    </div>
+                    <button type="button" class="btn btn-outline-success mb-5 mt-5" onclick="resetLanguages();">Reset Languages</button>
+                </div>
         </form>
     </div>
     <script src="../js/character.js"></script>
