@@ -765,6 +765,180 @@ let backgroundData = [
             "Tinker's Tools",
             "Weaver's Tools",
             "Woodcarver's Tools"]
+    }, {
+        background: "Haunted One",
+        skills: [],
+        countSkillsAdd: 2,
+        skillsOptions: ["Arcana", "Investigation", "Religion", "Survival"],
+        languages: [],
+        countLangAdd: 2,
+        tools: [],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Hermit",
+        skills: ["Medicine", "Religion"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 1,
+        tools: ["Herbalism Kit"],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Inheritor",
+        skills: ["Survival"],
+        countSkillsAdd: 1,
+        skillsOptions: ["Arcana", "History", "Religion"],
+        languages: [],
+        countLangAdd: 1,
+        tools: [],
+        countToolsAdd: 1,
+        toolOptions: ["Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol",
+        "Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"]
+    }, {
+        background: "Knight",
+        skills: ["History","Persuasion"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 1,
+        tools: [],
+        countToolsAdd: 1,
+        toolOptions: ["Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"]
+    }, {
+        background: "Knight of the Order",
+        skills: ["Persuasion"],
+        countSkillsAdd: 1,
+        skillsOptions: ["Arcana", "History", "Nature", "Religion"],
+        languages: [],
+        countLangAdd: 1,
+        tools: [],
+        countToolsAdd: 1,
+        toolOptions: ["Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol",
+        "Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"]
+    }, {
+        background: "Marine",
+        skills: ["Athletics", "Survival"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Land Vehicles", "Water Vehicles"],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Mercenary Veteran",
+        skills: ["Athletics", "Persuasion"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Land Vehicles"],
+        countToolsAdd: 1,
+        toolOptions: ["Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"]
+    }, {
+        background: "Noble",
+        skills: ["History", "Persuasion"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 1,
+        tools: [],
+        countToolsAdd: 1,
+        toolOptions: ["Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"]
+    }, {
+        background: "Outlander",
+        skills: ["Athletics", "Survival"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 1,
+        tools: [],
+        countToolsAdd: 1,
+        toolOptions: ["Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol"]
+    }, {
+        background: "Pirate",
+        skills: ["Athletics", "Perception"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Navigator's Tools", "Water Vehicles"],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Sage",
+        skills: ["Arcana", "History"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 2,
+        tools: [],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Sailor",
+        skills: ["Athletics", "Perception"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Navigator's Tools","Water Vehicles"],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Shipwright",
+        skills: ["History", "Perception"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Carpenter's Tools","Water Vehicles"],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Smuggler",
+        skills: ["Athletics", "Deception"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Water Vehicles"],
+        countToolsAdd: 0,
+        toolOptions: []
+    }, {
+        background: "Soldier",
+        skills: ["Athletics", "Intimidation"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Land Vehicles"],
+        countToolsAdd: 1,
+        toolOptions: ["Dragonchess Set","Playing Card Set","Three-Dragon Ante Set"]
+    }, {
+        background: "Urban Bounty Hunter",
+        skills: [],
+        countSkillsAdd: 2,
+        skillsOptions: ["Deception","Insight","Persuasion","Stealth"],
+        languages: [],
+        countLangAdd: 0,
+        tools: [],
+        countToolsAdd: 2,
+        toolOptions: ["Dragonchess Set","Playing Card Set","Three-Dragon Ante Set",
+        "Bagpipes","Drum","Dulcimer","Flute","Horn","Lute","Lyre","Pan Flute","Shawm","Viol",
+        "Theives' Tools"]
+    }, {
+        background: "Urchin",
+        skills: ["Sleight of Hand","Stealth"],
+        countSkillsAdd: 0,
+        skillsOptions: [],
+        languages: [],
+        countLangAdd: 0,
+        tools: ["Disguise Kit","Theives' Tools"],
+        countToolsAdd: 0,
+        toolOptions: []
     }
 ]
 
